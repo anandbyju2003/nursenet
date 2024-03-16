@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .record {
+            background-color: #F2F2F2;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .record button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1><%= userid %></h1>
+        <h1><%= data.name %></h1>
+        <h2><%= data.email %></h2>
+        <h2><%= data.address %></h2>
+        <h2><%= data.contact %></h2>
+        <h2><%= data.pincode %></h2>
+        <h2><%= data.city %></h2>
+        <h2><%= data.profession %></h2>
+        <h2><%= data.rating %></h2>
+
+        <% data.reviews.forEach(function(review) { %>
+            <div class="record">
+                <h3><%= review %></h3>
+            </div>
+        <% }); %>
+        <button><a href="/bookings?={data.id}">Book Now</a></button>
+    </div>
+</body>
+</html>

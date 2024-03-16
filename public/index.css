@@ -1,0 +1,7 @@
+body{
+    background-color: black;
+}
+input{
+    display: flex;
+    flex-direction: column;
+}

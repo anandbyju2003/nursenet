@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .record {
+            background-color: #F2F2F2;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .record button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Records</h1>
+        <% data.forEach(record => { %>
+            <a href="/workerdetails?id=<%= record.id %>">
+            <div class="record">  
+                <h2><%= record.id %></h2>
+                <!-- <button>Book Now</button> -->
+            </div>
+            </a>
+        <% }) %>
+    </div>
+</body>
+</html>
