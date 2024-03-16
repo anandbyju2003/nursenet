@@ -21,7 +21,7 @@ const workerSchema = new Schema({
   profession: String,
   rating: { type: Number, default: 0 },
   noofratings: { type: Number, default: 0 },
-  reviews: [String]
+  reviews: [{ reviewer: String, review: String }]
 });
 
 module.exports = {

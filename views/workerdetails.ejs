@@ -34,7 +34,8 @@
 
         <% data.reviews.forEach(function(review) { %>
             <div class="record">
-                <h3><%= review %></h3>
+                <h3><%= review.reviewer %></h3>
+                <p><%= review.review %></p>
             </div>
         <% }); %>
         <button><a href="/bookings?={data.id}">Book Now</a></button>
