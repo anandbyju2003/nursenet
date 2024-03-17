@@ -2,7 +2,7 @@ const express = require('express');
 const session=require('express-session');
 const mongoose=require('mongoose');
 const bodyParser=require('body-parser');
-const {Users,Workers,Reviews}=require('./schema');
+const {Users,Workers,Bookings}=require('./schema');
 const app=express();
 app.use(session({
     secret:'youwillnevergetthisshit',
@@ -73,13 +73,23 @@ app.route("/bookings")
         res.render('booking',{workerid,userid});
     });
 
-    app.post('/location', (req, res) => {
-        const workerid = req.session.workerid;
-        const userid = req.session.myid;
-        const coordinates = req.body; // Access JSON body
-        console.log('Received coordinates:', coordinates);
-        res.json({ message: 'Location received successfully.' });
+    
+app.route("/bookconfirm")
+    .post((req,res)=>{
+        const workerid=req.session.workerid;
+        const userid=req.session.myid; 
+        const date=req.body.date;
+        const time=req.body.time;
+        const locationLink=req.body.locationLink;
+        const problem=req.body.problem;
+        const problemStatement=req.body.problemStatement;
+        const booking=new Bookings({workerid,userid,date,time,locationLink,problem,problemStatement});
+        booking.save().then((data)=>{
+            console.log(data);
+            res.send('Booking confirmed');
+        });
     });
+
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });

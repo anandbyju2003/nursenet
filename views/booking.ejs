@@ -7,40 +7,51 @@
 </head>
 <body>
     <h1>Share Location</h1>
-    <button onclick="getLocation()">Get Location</button>
-
+    <form action="/bookconfirm" method="POST" id="locationForm">
+        <div>
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date">
+        </div>
+        <div>
+            <label for="time">Time:</label>
+            <select id="time" name="time">
+                <option value="morning">Morning</option>
+                <option value="noon">Noon</option>
+                <option value="evening">Evening</option>
+            </select>
+        </div>
+        <div>
+            <label for="problem">Problem:</label>
+            <input type="text" id="problem" name="problem">
+        </div>
+        <div>
+            <label for="problemStatement">Problem Statement:</label>
+            <textarea id="problemStatement" name="problemStatement"></textarea>
+        </div>
+        <div>
+            <label for="locationLink">Location Link:</label>
+            <input type="text" id="locationLink" name="locationLink">
+        </div>
+        <div>
+            <button type="button" onclick="getLocation()">Share Location</button>
+            <input type="hidden" id="latitude" name="latitude">
+            <input type="hidden" id="longitude" name="longitude">
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
     <script>
         function getLocation() {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(sendLocation);
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    document.getElementById('locationLink').value = `https://www.google.com/maps/place/${latitude},${longitude}`;
+                });
             } else {
                 alert("Geolocation is not supported by this browser.");
             }
-        }
-
-        function sendLocation(position) {
-            const coordinates = {
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude
-            };
-
-            // Send coordinates to Express.js server as JSON in the body of a POST request
-            fetch('/location', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(coordinates)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Server response:', data);
-                alert('Location sent successfully!');
-            })
-            .catch(error => {
-                console.error('Error sending location:', error);
-                alert('Error sending location. Please try again later.');
-            });
         }
     </script>
 </body>

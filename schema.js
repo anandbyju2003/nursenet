@@ -24,7 +24,20 @@ const workerSchema = new Schema({
   reviews: [{ reviewer: String, review: String }]
 });
 
+const bookingSchema=new Schema({
+  workerid: { type: Schema.Types.ObjectId, ref: 'Workers' },
+  userid: { type: Schema.Types.ObjectId, ref: 'Users' },
+  date:Date,
+  time:String,
+  locationLink:String,
+  problem:String,
+  problemStatement:String,
+  paymentstatus:{type:String,default:'pending'},
+  bookingstatus:{type:String,default:'pending'},
+  baseprice:{type:Number,default:700},
+});
 module.exports = {
   Users: mongoose.model("User", userSchema),
   Workers: mongoose.model("Workers", workerSchema),
+  Bookings: mongoose.model("Bookings", bookingSchema)
 };
