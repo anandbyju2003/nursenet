@@ -9,6 +9,7 @@ app.use(session({
     resave:false,
     saveUninitialized:true
 }))
+app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
@@ -59,9 +60,25 @@ app.route("/workerdetails")
     .get((req,res)=>{
         const id=req.query.id;
         const userid=req.session.myid;
+        req.session.workerid=id;
         Workers.findById(id).then((data)=>{
             res.render('workerdetails',{ data , userid});
         });
+    });
+
+app.route("/bookings")
+    .get((req,res)=>{
+        const workerid=req.session.workerid;
+        const userid=req.session.myid; 
+        res.render('booking',{workerid,userid});
+    });
+
+    app.post('/location', (req, res) => {
+        const workerid = req.session.workerid;
+        const userid = req.session.myid;
+        const coordinates = req.body; // Access JSON body
+        console.log('Received coordinates:', coordinates);
+        res.json({ message: 'Location received successfully.' });
     });
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
