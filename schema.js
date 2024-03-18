@@ -13,6 +13,7 @@ const userSchema = new Schema({
 
 const workerSchema = new Schema({
   name: String,
+  description: { type: String, default: "No description available" },
   email: String,
   address: String,
   city: String,

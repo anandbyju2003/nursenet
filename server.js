@@ -47,7 +47,17 @@ app.route("/userlogin")
                 res.send('failed to login');
             }
         })});
-
+app.route('/workersignup')
+        .get((req,res)=>{
+            res.sendFile(__dirname+'/public/workersignup.html');
+        })
+        .post((req,res)=>{
+            const {name,description,email,address,city,pincode,contact,profession}=req.body;
+            const worker=new Workers({name,description,email,address,city,pincode,contact,profession});
+            worker.save().then(()=>{
+                res.send('Data saved');
+            });
+        });
 app.route("/userhome")
         .get((req,res)=>{
             const profession=req.query.profession;

@@ -26,7 +26,10 @@
         <% data.forEach(record => { %>
             <a href="/workerdetails?id=<%= record.id %>">
             <div class="record">  
-                <h2><%= record.id %></h2>
+                <h2><%= record.name %></h2>
+                <p><%= record.description %></p>
+                <p><%= record.rating %></p>
+                <p><%= record.profession %></p>
                 <!-- <button>Book Now</button> -->
             </div>
             </a>
