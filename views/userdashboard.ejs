@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="dashboard">
+        <% data.forEach(function(booking) { %>
+            <div class="booking">
+                <div class="booking-details"></div>
+                <p><strong>Profession:</strong><%= booking.workerid.profession %></p>
+                <p><strong>Email:</strong><%= booking.workerid.email %></p>
+                <p><strong>Contact:</strong><%= booking.workerid.contact %></p>
+                <p><strong>Problem title:</strong><%= booking.problem %></p>
+                <p><strong>Problem description:</strong><%= booking.problemStatement %></p>
+                <p><strong>Payment Status:</strong> <%= booking.paymentstatus %></p>
+                <p><strong>Booking Status:</strong> <%= booking.bookingstatus %></p>
+                <p><strong>Base Price:</strong> <%= booking.baseprice %></p>
+                <p><strong>Location:</strong> <%= booking.locationLink %></p>
+                <p><strong>Date:</strong> <%= booking.date %></p>
+                <p><strong>Time:</strong> <%= booking.time %></p>
+                <hr>
+            </div>
+        <% }); %>
+    </div>
+</body>
+</html>

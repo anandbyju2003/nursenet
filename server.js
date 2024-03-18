@@ -90,6 +90,15 @@ app.route("/bookconfirm")
         });
     });
 
+    app.route("/userdashboard")
+    .get((req,res)=>{
+        const userid=req.session.myid;
+        Bookings.find({ userid: userid })
+            .populate('workerid', 'name email contact profession')
+            .then((data) => {
+                res.render('userdashboard', { data });
+            });
+    });
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });
