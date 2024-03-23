@@ -181,6 +181,43 @@ app.route("/bookconfirm")
                 res.send('Failed to request payment');
             });
         })
+    app.route("/cancelbooking")
+    .post((req,res)=>{
+        const bookingId = req.body.bookingid;
+        Bookings.findByIdAndDelete(bookingId)
+            .then(() => {
+                res.send('Booking cancelled');
+            })
+            .catch((error) => {
+                console.log(error);
+                res.send('Failed to cancel booking');
+            });
+           
+        });
+        
+    app.route("/paynow")
+    .post((req,res)=>{
+        const bookingId = req.body.bookingid;
+        Bookings.findOneAndUpdate({ _id: bookingId }, { $set: { paymentstatus: "paid" } })
+            .catch((error) => {
+                console.log(error);
+                res.send('Failed to update payment status');
+            });
+    })
+    app.route('userprofileedit')
+    .get((req,res)=>{
+        const userid=req.session.myid;
+        Users.findById(userid).then((data)=>{
+            res.render('userprofileedit',{data});
+        });
+    })
+    .post((req,res)=>{
+        const userid=req.session.myid;
+        const {address,city,pincode,contact,password}=req.body;
+        Users.findByIdAndUpdate(userid,{address,city,pincode,contact,password}).then(()=>{
+            res.send('Data updated');
+        })
+    })
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });
