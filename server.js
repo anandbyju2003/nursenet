@@ -234,6 +234,36 @@ app.route("/bookconfirm")
             res.redirect('/workerdashboard');
         });
     })
+
+    app.route("/rateworker")
+    .post((req, res) => {
+        const { rating, review, bookingid } = req.body;
+        Bookings.findById(bookingid)
+            .populate('userid', 'name')
+            .then((data) => {
+                Workers.findById(data.workerid).then((worker) => {
+                    const newRating = (Number(worker.rating) + Number(rating)) / 2;
+                    const newReview = { reviewer:data.userid.name,review: review };
+                    Workers.findByIdAndUpdate(data.workerid, {
+                        noofratings: worker.noofratings + 1,
+                        rating: newRating,
+                        $push: { reviews: newReview } 
+                    }).then(() => {
+                        res.send("done");
+                    }).catch(err => {
+                        console.error("Error updating worker:", err);
+                        res.status(500).send("Error updating worker");
+                    });
+                }).catch(err => {
+                    console.error("Error finding worker:", err);
+                    res.status(500).send("Error finding worker");
+                });
+            }).catch(err => {
+                console.error("Error finding booking:", err);
+                res.status(500).send("Error finding booking");
+            });
+    });
+
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });
