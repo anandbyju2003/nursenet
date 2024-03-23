@@ -17,7 +17,7 @@ app.set('view engine', 'ejs');
 mongoose.connect('mongodb://localhost:27017/test').then(()=>console.log("db connected"))
 app.route('/')
     .get((req, res) => {
-        res.sendFile(__dirname + '/public/mainpage.html');
+        res.sendFile(__dirname + '/public/index.html');
     })
 
 app.route('/usersignup')
