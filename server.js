@@ -115,7 +115,7 @@ app.route("/bookconfirm")
         const booking=new Bookings({workerid,userid,date,time,locationLink,problem,problemStatement});
         booking.save().then((data)=>{
             console.log(data);
-            res.send('Booking confirmed');
+            res.redirect('/userdashboard');
         });
     });
 
@@ -204,6 +204,7 @@ app.route("/bookconfirm")
                 res.send('Failed to update payment status');
             });
     })
+
     app.route('/userprofileedit')
     .get((req,res)=>{
         const userid=req.session.myid;
@@ -216,6 +217,21 @@ app.route("/bookconfirm")
         const {address,city,pincode,contact,password}=req.body;
         Users.findByIdAndUpdate(userid, { address, city, pincode, contact, password }).then(() => {
             res.redirect('/userdashboard');
+        });
+    })
+
+    app.route('/workerprofileedit')
+    .get((req,res)=>{
+        const workerid=req.session.workmyid;
+        Workers.findById(workerid).then((data)=>{
+            res.render('workerprofileedit',{data});
+        });
+    })
+    .post((req,res)=>{
+        const workerid=req.session.workmyid;
+        const {address,city,pincode,contact,password,description}=req.body;
+        Workers.findByIdAndUpdate(workerid, { address, city, pincode, contact, password, description }).then(() => {
+            res.redirect('/workerdashboard');
         });
     })
 app.listen(3000, () => {
