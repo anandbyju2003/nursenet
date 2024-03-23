@@ -22,7 +22,8 @@ const workerSchema = new Schema({
   profession: String,
   rating: { type: Number, default: 0 },
   noofratings: { type: Number, default: 0 },
-  reviews: [{ reviewer: String, review: String }]
+  reviews: [{ reviewer: String, review: String }],
+  password: String,
 });
 
 const bookingSchema=new Schema({
@@ -38,7 +39,7 @@ const bookingSchema=new Schema({
   baseprice:{type:Number,default:700},
 });
 module.exports = {
-  Users: mongoose.model("User", userSchema),
+  Users: mongoose.model("Users", userSchema),
   Workers: mongoose.model("Workers", workerSchema),
   Bookings: mongoose.model("Bookings", bookingSchema)
 };

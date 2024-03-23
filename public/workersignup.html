@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/workersignup" method="POST">
+    <form  method="POST" action="/workersignup">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br><br>
         
@@ -31,6 +31,9 @@
         <label for="description">Description:</label>
         <textarea id="description" name="description" required></textarea><br><br>
         
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
         <input type="submit" value="Submit">
     </form>
 </body>

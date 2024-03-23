@@ -13,8 +13,8 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
-mongoose.connect('mongodb://localhost:27017/test').then(console.log('Connected to DB'));
 
+mongoose.connect('mongodb://localhost:27017/test').then(()=>console.log("db connected"))
 app.route('/')
     .get((req, res) => {
         res.sendFile(__dirname + '/public/mainpage.html');
@@ -52,12 +52,31 @@ app.route('/workersignup')
             res.sendFile(__dirname+'/public/workersignup.html');
         })
         .post((req,res)=>{
-            const {name,description,email,address,city,pincode,contact,profession}=req.body;
-            const worker=new Workers({name,description,email,address,city,pincode,contact,profession});
+            const {name,description,email,address,city,pincode,contact,profession,password}=req.body;
+            const worker=new Workers({name,description,email,address,city,pincode,contact,profession,password});
             worker.save().then(()=>{
                 res.send('Data saved');
             });
         });
+app.route("/workerlogin")
+    .get((req,res)=>{
+        res.sendFile(__dirname+'/public/workerlogin.html');
+    })
+    .post((req,res)=>{
+        const {email,password}=req.body;
+        Workers.findOne({email:email,password:password}).then((data)=>{
+            if(data){
+                req.session.workmyid=data.id;
+                Bookings.find({workerid:data.id,bookingstatus: { $in: ["pending", "accepted"] }})
+                    .populate('userid', 'name email address city pincode contact')
+                    .then((books)=>{
+                        res.render('workerdashboard',{books,data});
+                    });
+            }
+            else{
+                res.send('failed to login');
+            }
+        })})
 app.route("/userhome")
         .get((req,res)=>{
             const profession=req.query.profession;
@@ -109,6 +128,59 @@ app.route("/bookconfirm")
                 res.render('userdashboard', { data });
             });
     });
+
+    app.route("/acceptbooking")
+    .post((req,res)=>{
+        const bookingId = req.body.bookingid;
+        const bookingStatus = req.body.bookingstatus;
+
+        Bookings.findByIdAndUpdate(bookingId, { $set: { bookingstatus: bookingStatus } })
+            .then(() => {
+                res.send('Booking status updated');
+            })
+            .catch((error) => {
+                console.log(error);
+                res.send('Failed to update booking status');
+            });
+    })
+
+    app.route("/cancelstatus")
+    .post((req,res)=>{
+        const bookingId = req.body.bookingid;
+        Bookings.findByIdAndUpdate(bookingId, { $set: { bookingstatus: "pending" } })
+            .then(() => {
+                res.send('Booking status updated');
+            })
+            .catch((error) => {
+                console.log(error);
+                res.send('Failed to update booking status');
+            });
+    })
+    app.route('/rejectbooking')
+    .post((req,res)=>{
+        const bookingId = req.body.bookingid;
+        Bookings.findByIdAndUpdate(bookingId, { $set: { bookingstatus: "rejected" } })
+            .then(() => {
+                res.send('Booking status updated');
+            })
+            .catch((error) => {
+                console.log(error);
+                res.send('Failed to update booking status');
+            });
+    })
+
+    app.route("/requestpayment")
+    .post((req,res)=>{
+        const bookingId = req.body.bookingid;
+        Bookings.findOneAndUpdate({ _id: bookingId }, { $set: { paymentstatus: "requested" } })
+            .then(() => {
+                res.send('Payment requested');
+            })
+            .catch((error) => {
+                console.log(error);
+                res.send('Failed to request payment');
+            });
+        })
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });

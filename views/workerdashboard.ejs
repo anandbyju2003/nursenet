@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div>
+        <p><%= data.name %></p>
+        <p><%= data.description %></p>
+        <p><%= data.email %></p>
+        <p>Address: <%= data.address %></p>
+        <p>City: <%= data.city %></p>
+        <p>Pincode: <%= data.pincode %></p>
+        <p>Contact: <%= data.contact %></p>
+        <p>Profession: <%= data.profession %></p>
+        <p>Rating: <%= data.rating %></p>
+        <p>No. of Ratings: <%= data.noofratings %></p>
+     </div>
+     <h1>booking deets</h1>
+    <% books.forEach(function(book,index) { %>
+        <div id="book<%= index %>">
+            <h2>Name: <%= book.userid.name %></h2>
+            <p>Email: <%= book.userid.email %></p>
+            <p>Address: <%= book.userid.address %></p>
+            <p>City: <%= book.userid.city %></p>
+            <p>Pincode: <%= book.userid.pincode %></p>
+            <p>Contact: <%= book.userid.contact %></p>
+            <P>Problem: <%= book.problem %></P>
+            <div>
+                <button onclick="accepted('<%= index %>','<%= book._id %>')" id="accept<%= index %>">Accept</button>
+                <button style="display: none;" onclick="cancel('<%= index %>','<%= book._id %>')" id="cancel<%= index %>">Cancel</button>
+                <button onclick="rejected('<%= index %>','<%= book._id %>')" id="reject<%= index %>">Reject</button>
+                <button style="display: none;" onclick="reqpayment('<%= index %>','<%= book._id %>')" id="requestPaymentButton<%= index %>">Request Payment</button>
+            </div>
+            
+        </div>
+    <% }); %>
+    <script>
+        
+        function reqpayment(index,id){
+            alert('Payment requested');
+            fetch('/requestpayment',{
+                method:'POST',
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body:JSON.stringify({bookingid:id})
+            })
+        }
+
+        function rejected(index,id){
+            alert('Booking Rejected')
+            const accept=document.getElementById('accept'+index)
+            const requestPaymentButton=document.getElementById('requestPaymentButton'+index)
+            const cancel=document.getElementById('cancel'+index)
+            const reject=document.getElementById('reject'+index)
+            reject.style.display='none'
+            cancel.style.display='block'
+            accept.style.display='none'
+            fetch('/rejectbooking', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ bookingstatus: 'rejected', bookingid: id })
+            })
+        }
+        function cancel(index,id){
+            const accept=document.getElementById('accept'+index)
+            const requestPaymentButton=document.getElementById('requestPaymentButton'+index)
+            const cancel=document.getElementById('cancel'+index)
+            const reject=document.getElementById('reject'+index)
+            reject.style.display='block'
+            cancel.style.display='none'
+             accept.style.display='block'
+             requestPaymentButton.style.display='none'
+             fetch('/cancelstatus',{
+                method:'POST',
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body:JSON.stringify({bookingid:id})
+             })
+        }
+        function accepted(index,id){
+            alert('Booking accepted')
+            const accept=document.getElementById('accept'+index)
+            const requestPaymentButton=document.getElementById('requestPaymentButton'+index)
+            const cancel=document.getElementById('cancel'+index)
+            const reject=document.getElementById('reject'+index)
+            reject.style.display='none'
+            cancel.style.display='block'
+            accept.style.display='none'
+            requestPaymentButton.style.display='block'
+            fetch('/acceptbooking', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ bookingstatus:'done',bookingid: id })
+            })
+        }       
+            </script>
+        </body>
+        </html>
