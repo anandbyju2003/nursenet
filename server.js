@@ -204,7 +204,7 @@ app.route("/bookconfirm")
                 res.send('Failed to update payment status');
             });
     })
-    app.route('userprofileedit')
+    app.route('/userprofileedit')
     .get((req,res)=>{
         const userid=req.session.myid;
         Users.findById(userid).then((data)=>{
@@ -214,9 +214,9 @@ app.route("/bookconfirm")
     .post((req,res)=>{
         const userid=req.session.myid;
         const {address,city,pincode,contact,password}=req.body;
-        Users.findByIdAndUpdate(userid,{address,city,pincode,contact,password}).then(()=>{
-            res.send('Data updated');
-        })
+        Users.findByIdAndUpdate(userid, { address, city, pincode, contact, password }).then(() => {
+            res.redirect('/userdashboard');
+        });
     })
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
