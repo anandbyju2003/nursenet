@@ -2,24 +2,41 @@
 <html>
   <head>
     <title>Profession</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:wght@500&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/userhome.css">
   </head>
-  <link rel="stylesheet" type="text/css" href="./css/userhome.css">
   <body>
-        <h1>Profession</h1>
-        <button onclick="window.location.href='/userdashboard'">Go to User Dashboard</button>
-            <ul>
-                <li><a href="/userhome?profession=carpenter&login=true">Carpenter</a></li>
-                <li><a href="#">Plumber</a></li>
-                <li><a href="#">Electrician</a></li>
-                <li><a href="#">Beautician</a></li>
-                <li><a href="#">Cleaner</a></li>
-                <li><a href="#">Mason</a></li>
-                <li><a href="#">Painter</a></li>
-                <li><a href="#">Interior Designer</a></li>
-                <li><a href="#">Technician</a></li>
-                <li><a href="#">Septic Tank Service</a></li>
-                <li><a href="#">Masseur</a></li>
-                <li><a href="#">Locksmith</a></li>
-            </ul>
+    <header>
+      <div id="title">SERVICESCAPE</div>
+      <nav>
+          <ul>
+              <button onclick="window.location.href='/userdashboard'" id="bottone1"><strong>Go to Dashboard</strong></button>
+              <button onclick="window.location.href='/userhome'" id="bottone1"><strong>HOME</strong></button>
+              <button onclick="window.location.href='/about'" id="bottone1"><strong>ABOUT</strong></button>
+              <button onclick="window.location.href='/contact'" id="bottone1"><strong>CONTACT</strong></button>
+          </ul>
+      </nav>
+      
+  </header>
+  
+  <h1>What service would you like to order</h1>   
+  <section id="gridsection">
+      <div class="grid-container">
+            <div class="grid-item"><a href="/userhome?profession=carpenter&login=true"><img src="images/carpenter.jpeg" alt="Carpenter">CARPENTER</a></div>
+            <div class="grid-item"><a href="/userhome?profession=plumber&login=true"><img src="images/plumber.jpeg" alt="Plumber">PLUMBER</a></div>
+            <div class="grid-item"><a href="/userhome?profession=electrician&login=true"><img src="images/electrician.jpeg" alt="Electrician">ELECTRICIAN</a></div>
+            <div class="grid-item"><a href="/userhome?profession=technician&login=true"><img src="images/technician.jpeg" alt="Technician">TECHNICIAN</a></div>
+            <div class="grid-item"><a href="/userhome?profession=cleaner&login=true"><img src="images/cleaner.jpeg" alt="Cleaner">CLEANER</a></div>
+            <div class="grid-item"><a href="/userhome?profession=mason&login=true"><img src="images/mason.jpeg" alt="Mason">MASON</a></div>
+            <div class="grid-item"><a href="/userhome?profession=painter&login=true"><img src="images/painter.jpeg" alt="Painter">PAINTER</a></div>
+            <div class="grid-item"><a href="/userhome?profession=interiordesigner&login=true"><img src="images/interiordesigner.jpeg" alt="Interior Designer">INTERIOR DESIGNER</a></div>
+            <div class="grid-item"><a href="/userhome?profession=painter&login=true"><img src="images/painter.jpeg" alt="Painter">PAINTER</a></div>
+            <div class="grid-item"><a href="/userhome?profession=roofer&login=true"><img src="images/roofer.jpeg" alt="Roofer">ROOFER</a></div>
+            <div class="grid-item"><a href="/userhome?profession=landscaper&login=true"><img src="images/landscaper.jpeg" alt="Landscaper">LANDSCAPER</a></div>
+            <div class="grid-item"><a href="/userhome?profession=pestcontrol&login=true"><img src="images/pestcontrol.jpeg" alt="Pest Control">PEST CONTROL</a></div>
+        </div>
+     </section>       
     </body>
 </html>
