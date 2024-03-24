@@ -24,6 +24,7 @@ const workerSchema = new Schema({
   noofratings: { type: Number, default: 0 },
   reviews: [{ reviewer: String, review: String }],
   password: String,
+  status: { type: String, default: "available" },
 });
 
 const bookingSchema=new Schema({

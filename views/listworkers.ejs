@@ -4,36 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .record {
-            background-color: #F2F2F2;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-
-        .record button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:wght@500&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/listworkers.css">
 </head>
 <body>
-    <div>
-        <h1>Records</h1>
+    <header>
+        <div id="title">SERVICESCAPE</div>
+        <nav>
+            <ul>
+                <button onclick="window.location.href='/userdashboard'" id="bottone1"><strong>Go to Dashboard</strong></button>
+                <button onclick="window.location.href='/userhome'" id="bottone1"><strong>HOME</strong></button>
+                <button onclick="window.location.href='/about'" id="bottone1"><strong>ABOUT</strong></button>
+                <button onclick="window.location.href='/contact'" id="bottone1"><strong>CONTACT</strong></button>
+            </ul>
+        </nav> 
+    </header>
+    <h1>Available Workers</h1>
+    <div id="filterbox">
+        <div class="coolinput">
+            <label for="input" class="text">Name:</label>
+            <input type="text" id='namesearch'placeholder="Search name..." name="input" class="input">
+        </div>
+        <div class="coolinput">
+            <label for="input" class="text">City:</label>
+            <input type="text" id='citysearch' placeholder="Search city..." name="input" class="input">
+        </div>
+        <select id="ratingsearch" name="rating">
+            <option value="0">Rating</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <select id="availabilitysearch" name="availability">
+            <option value="0">Availability</option>
+            <option value="available">Available</option>
+            <option value="busy">Busy</option>
+        </select>
+    </div>
+    <div id="recordholder">
         <% data.forEach(record => { %>
-            <a href="/workerdetails?id=<%= record.id %>">
-            <div class="record">  
-                <h2><%= record.name %></h2>
-                <p><%= record.description %></p>
-                <p><%= record.rating %></p>
-                <p><%= record.profession %></p>
-                <!-- <button>Book Now</button> -->
+            <div class="record <%= record.status === 'busy' ? 'busyrec' : 'availablerec' %>">
+                <h2>Name: <%= record.name %></h2>
+                <p>City: <%= record.city %></p>
+                <p class="<%= record.status === 'busy' ? 'busy' : 'available' %>">Status: <%= record.status %></p>
+                <div class="rating">
+                    <label>Rating:</label>
+                    <% for (let i = 0; i < record.rating; i++) { %>
+                        <span class="star">&#9733;</span>
+                    <% } %>
+                </div>
+                <p>Description: <%= record.description %></p>
+                <% if (record.status !== 'busy') { %>
+                    <button id='bottone1' onclick="window.location.href='/workerdetails?id=<%= record.id %>'">Book now</button>
+                <% } %>
             </div>
-            </a>
         <% }) %>
     </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const namesearch = document.getElementById('namesearch');
+            const cityserach = document.getElementById('citysearch');
+            const ratingsearch = document.getElementById('ratingsearch');
+            const availabilitysearch = document.getElementById('availabilitysearch');
+
+            namesearch.addEventListener('input', filternames);
+            cityserach.addEventListener('input', filtercity);
+            ratingsearch.addEventListener('change', filterrating);
+            availabilitysearch.addEventListener('change', filteravailability);
+
+            function filteravailability() {
+                const searchValue = availabilitysearch.value;
+                const records = document.getElementsByClassName('record');
+                Array.from(records).forEach(record => {
+                    const status = record.childNodes[5].innerText.slice(8).toLowerCase();
+
+                    if (searchValue == "0" || status === searchValue) {
+                        record.style.display = 'block';
+                    } else {
+                        record.style.display = 'none';
+                    }
+                });
+            }
+
+            function filterrating() {
+                const searchValue = ratingsearch.value;
+                const records = document.getElementsByClassName('record');
+                console.log(records[0].childNodes[7].innerText.slice(8).split(' ').length)
+                Array.from(records).forEach(record => {
+                    const rating = record.childNodes[7].innerText.slice(8).split(' ').length;
+
+                    if (rating >= searchValue) {
+                        record.style.display = 'block';
+                    } else {
+                        record.style.display = 'none';
+                    }
+                });
+            }
+            function filtercity() {
+                const searchValue = citysearch.value.toLowerCase();
+                const records = document.getElementsByClassName('record');
+                Array.from(records).forEach(record => {
+                    const city = record.childNodes[3].innerText.toLowerCase();
+
+                    if (city.includes(searchValue)) {
+                        record.style.display = 'block';
+                    } else {
+                        record.style.display = 'none';
+                    }
+                });
+            }
+            function filternames() {
+                const searchValue = namesearch.value.toLowerCase();
+                const records = document.getElementsByClassName('record');
+                console.log(records);
+                Array.from(records).forEach(record => {
+                    const name = record.childNodes[1].innerText.toLowerCase();
+
+                    if (name.includes(searchValue)) {
+                        record.style.display = 'block';
+                    } else {
+                        record.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+    
 </body>
 </html>
