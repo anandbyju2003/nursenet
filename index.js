@@ -268,7 +268,9 @@ app.route("/acceptbooking")
                     res.status(500).send("Error finding booking");
                 });
         });
-
+        app.get('/favicon.ico', (req, res) => {
+            res.status(204);
+        });
     app.listen(3000, () => {
         console.log('Server is running on port 3000');
     });
