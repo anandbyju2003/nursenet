@@ -4,7 +4,11 @@
 }
 body{
     margin:0;
-    background: #e0e2db;
+    background:url(../images/back.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center
 }
 
 nav {
@@ -13,8 +17,7 @@ nav {
 
 #title {
     padding-left: 3%;
-    padding-top: 1%;
-    font-family: Roboto Slab;
+    font-family: Mukta;
     font-size: 40px;
     font-weight: bold;
     color: #0355cc;
@@ -43,9 +46,10 @@ a{
 }
 #recordholder{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px;
 }
 #filterbox{
     display: flex;
@@ -65,35 +69,37 @@ select{
     color:#0355cc
 }
 .record {
-    background-color: white;
-    border-radius: 25px;
-    width: 700px;
+    background: rgba( 0, 0, 0, 0.6 );
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+    border-radius: 15px;
+    width: 500px;
     padding: 10px;
     font-family: Poppins;
     margin-bottom: 10px;
-    color:black;
+    color:white;
     border:2px solid red;
 }
 .star{
     font-size: 25px;
 }
 .busyrec{
-    border:5px solid red;
+    border:3px solid red;
 }
 .availablerec{
-    border:5px solid green;
+    border:3px solid rgb(87, 244, 87);
 }
 .available{
-    color:rgb(47, 158, 47);
+    color:rgb(103, 238, 103);
 }
 .busy{
-    color:red;
+    color:rgb(252, 67, 67);
 
 }
 h1{
     text-align: center;
     font-family: poppins;
-    color: #8b2635;
+    color:#0355cc;
     margin: 3% 0;
 }
 /*for userdashboard button*/
@@ -153,6 +159,7 @@ h1{
     background: #e8e8e8;
     font-family: Poppins;
     height: 50px;
+    width: 240px;
   }
   
   .coolinput input[type=text].input:focus {

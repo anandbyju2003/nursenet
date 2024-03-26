@@ -5,37 +5,36 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:wght@500&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./css/userhome.css">
+    <link rel="stylesheet"  href="./css/userhome.css">
   </head>
   <body>
     <header>
       <div id="title">SERVICESCAPE</div>
       <nav>
-          <ul>
-              <button onclick="window.location.href='/userdashboard'" id="bottone1"><strong>Go to Dashboard</strong></button>
-              <button onclick="window.location.href='/userhome'" id="bottone1"><strong>HOME</strong></button>
-              <button onclick="window.location.href='/about'" id="bottone1"><strong>ABOUT</strong></button>
-              <button onclick="window.location.href='/contact'" id="bottone1"><strong>CONTACT</strong></button>
-          </ul>
-      </nav>
-      
+        <ul>
+            <li>HOME</li>
+            <li>ABOUT</li>
+            <li><a href="/userdashboard">DASHBOARD</a></li>
+            <li>LOGIN</li>
+        </ul>
+    </nav>
   </header>
   
-  <h1>What service would you like to order</h1>   
+  <h1>Available Services</h1>   
   <section id="gridsection">
       <div class="grid-container">
-            <div class="grid-item"><a href="/userhome?profession=carpenter&login=true"><img src="images/carpenter.jpeg" alt="Carpenter">CARPENTER</a></div>
-            <div class="grid-item"><a href="/userhome?profession=plumber&login=true"><img src="images/plumber.jpeg" alt="Plumber">PLUMBER</a></div>
-            <div class="grid-item"><a href="/userhome?profession=electrician&login=true"><img src="images/electrician.jpeg" alt="Electrician">ELECTRICIAN</a></div>
-            <div class="grid-item"><a href="/userhome?profession=technician&login=true"><img src="images/technician.jpeg" alt="Technician">TECHNICIAN</a></div>
-            <div class="grid-item"><a href="/userhome?profession=cleaner&login=true"><img src="images/cleaner.jpeg" alt="Cleaner">CLEANER</a></div>
-            <div class="grid-item"><a href="/userhome?profession=mason&login=true"><img src="images/mason.jpeg" alt="Mason">MASON</a></div>
-            <div class="grid-item"><a href="/userhome?profession=painter&login=true"><img src="images/painter.jpeg" alt="Painter">PAINTER</a></div>
-            <div class="grid-item"><a href="/userhome?profession=interiordesigner&login=true"><img src="images/interiordesigner.jpeg" alt="Interior Designer">INTERIOR DESIGNER</a></div>
-            <div class="grid-item"><a href="/userhome?profession=painter&login=true"><img src="images/painter.jpeg" alt="Painter">PAINTER</a></div>
-            <div class="grid-item"><a href="/userhome?profession=roofer&login=true"><img src="images/roofer.jpeg" alt="Roofer">ROOFER</a></div>
-            <div class="grid-item"><a href="/userhome?profession=landscaper&login=true"><img src="images/landscaper.jpeg" alt="Landscaper">LANDSCAPER</a></div>
-            <div class="grid-item"><a href="/userhome?profession=pestcontrol&login=true"><img src="images/pestcontrol.jpeg" alt="Pest Control">PEST CONTROL</a></div>
+            <div class="grid-item"><a href="/userhome?profession=carpenter&login=true"><img src="images/carpenter.jpeg" alt="Carpenter"><span id="prof">CARPENTER</span></a></div>
+            <div class="grid-item"><a href="/userhome?profession=plumber&login=true"><img src="images/plumber.jpeg" alt="Plumber"><span id="prof">PLUMBER</span></a></div>
+            <div class="grid-item"><a href="/userhome?profession=electrician&login=true"><img src="images/electrician.jpeg" alt="Electrician"><span id="prof">ELECTRICIAN</span></a></div>
+            <div class="grid-item"><a href="/userhome?profession=technician&login=true"><img src="images/technician.jpeg" alt="Technician"><span id="prof">TECHNICIAN</span></a></div>
+            <div class="grid-item"><a href="/userhome?profession=cleaner&login=true"><img src="images/cleaner.jpeg" alt="Cleaner"><span id="prof">CLEANER</span></a></div>
+            <div class="grid-item"><a href="/userhome?profession=mason&login=true"><img src="images/mason.jpeg" alt="Mason"><span id="prof">MASON</span></a></div>
+            <div class="grid-item"><a href="/userhome?profession=painter&login=true"><img src="images/pain.jpg" alt="Painter"><span id="prof">PAINTER</span></a></div>
+            <div class="grid-item"><a href="/userhome?profession=interiordesigner&login=true"><img src="images/int.jpg" alt="Interior Designer"><span id="prof">INTERIOR DESIGNER</span></a></div>
+            <div class="grid-item"><a href="/userhome?profession=roofer&login=true"><img src="images/roofer.jpeg" alt="Roofer"><span id="prof">ROOFER</span></a></div>
+            <div class="grid-item"><a href="/userhome?profession=landscaper&login=true"><img src="images/landscaper.jpeg" alt="Landscaper"><span id="prof">LANDSCAPER</span></a></div>
+            <div class="grid-item"><a href="/userhome?profession=pestcontrol&login=true"><img src="images/pestcontrol.jpeg" alt="Pest Control"><span id="prof">PEST CONTROL</span></a></div>
+            <div class="grid-item"><a href="/userhome?profession=locksmith&login=true"><img src="images/locksmith.jpg" alt="Locksmith"><span id="prof">LOCKSMITH</span></a></div>
         </div>
      </section>       
     </body>

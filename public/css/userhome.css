@@ -4,7 +4,12 @@
 }
 body{
     margin:0;
-    background: #e0e2db;
+    background:url(../images/back.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+
 }
 
 nav {
@@ -13,8 +18,7 @@ nav {
 
 #title {
     padding-left: 3%;
-    padding-top: 1%;
-    font-family: Roboto Slab;
+    font-family: Mukta;
     font-size: 40px;
     font-weight: bold;
     color: #0355cc;
@@ -28,6 +32,10 @@ ul {
 ul li {
     list-style-type: none;
     font-family: Poppins;
+    font-size: 20px;
+}
+li:hover{
+    color: #0355cc;
 }
 header {
     display: flex;
@@ -35,7 +43,7 @@ header {
 }
 /*for userdashboard button*/
 #bottone1 {
-    color:#d1e3ff;
+    color:white;
     padding-left: 33px;
     margin:auto 3%;
     padding-right: 33px;
@@ -61,31 +69,39 @@ header {
 h1{
     text-align: center;
     font-family: poppins;
-    color: #8b2635;
-    margin: 3% 0;
+    color:#0355cc;
+    margin: 1% 0;
 
 }
+
 #gridsection{
     display: flex;
     justify-content: center;
-    margin:3% 5%;
+    margin:2% 5%;
+    border-radius: 20px; 
 }  
 .grid-container{
+   
     align-items: center;
     justify-content: center;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 15px;
-    backdrop-filter: blur(10px);
 }
 
 .grid-item {
-    background-color:#2e3532;
-    width:400px;
-    height:300px;
+    height:330px;
+    width: 380px;
     text-align: center;
     border-radius: 20px;
     transition: transform 0.3s ease-in-out;
+    background: rgba( 0, 0, 0, 0.4 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border-radius: 15px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+    
 }
 
 .grid-item:hover {
@@ -94,8 +110,8 @@ h1{
 img{
     width: 100%;
     height: 80%;
-    padding:10px 10px;
-    border-radius: 20px;
+    padding:5px 5px;
+    border-radius: 15px;
 }
 a{
     text-align: center;
@@ -103,4 +119,18 @@ a{
     font-size: 20px;
     font-family: poppins;
     text-decoration: none;
+}
+li a{
+    color: black;
+    font-size: 20px;
+    font-family: poppins;
+    text-decoration: none;
+}
+li a:hover{
+    color: #0355cc;
+}
+#prof{
+    color:white;
+    font-weight: 200;
+    font-size: 20px;
 }
