@@ -14,10 +14,10 @@
         <div id="title">SERVICESCAPE</div>
         <nav>
             <ul>
-                <button onclick="window.location.href='/userdashboard'" id="bottone1"><strong>Go to Dashboard</strong></button>
-                <button onclick="window.location.href='/userhome'" id="bottone1"><strong>HOME</strong></button>
-                <button onclick="window.location.href='/about'" id="bottone1"><strong>ABOUT</strong></button>
-                <button onclick="window.location.href='/contact'" id="bottone1"><strong>CONTACT</strong></button>
+                <li>HOME</li>
+                <li>ABOUT</li>
+                <li><a href="/userdashboard">DASHBOARD</a></li>
+                <li>LOGIN</li>
             </ul>
         </nav> 
     </header>
@@ -57,9 +57,9 @@
                         <span class="star">&#9733;</span>
                     <% } %>
                 </div>
-                <p>Description: <%= record.description %></p>
+                <br>
                 <% if (record.status !== 'busy') { %>
-                    <button id='bottone1' onclick="window.location.href='/workerdetails?id=<%= record.id %>'">Book now</button>
+                    <button id='bottone1' onclick="window.location.href='/workerdetails?id=<%= record.id %>'">Book Now</button>
                 <% } %>
             </div>
         <% }) %>

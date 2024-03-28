@@ -5,43 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:wght@500&display=swap" rel="stylesheet">
-    <title>Document</title>
-    <style>
-        .record {
-            background-color: #F2F2F2;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-
-        .record button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:wght@500&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet"  href="./css/workerdetails.css">
 </head>
 <body>
-    <div>
-        <h1><%= userid %></h1>
-        <h1><%= data.name %></h1>
-        <h2><%= data.email %></h2>
-        <h2><%= data.address %></h2>
-        <h2><%= data.contact %></h2>
-        <h2><%= data.pincode %></h2>
-        <h2><%= data.city %></h2>
-        <h2><%= data.profession %></h2>
-        <h2><%= data.rating %></h2>
-
-        <% data.reviews.forEach(function(review) { %>
-            <div class="record">
-                <h3><%= review.reviewer %></h3>
-                <p><%= review.review %></p>
+    <header>
+        <div id="title">SERVICESCAPE</div>
+        <nav>
+          <ul>
+              <li>HOME</li>
+              <li>ABOUT</li>
+              <li><a href="/userdashboard">DASHBOARD</a></li>
+              <li>LOGIN</li>
+          </ul>
+      </nav>
+    </header>
+    <div id="wrapper">
+        <div id="container">
+            <div id="firstsec">
+                <div id="deetscontainer">
+                    <h2><span class="label">Name:</span> <%= data.name %></h2>
+                    <h2><span class="label">City:</span> <%= data.city %></h2>
+                    <h2><span class="label">Rating:</span><% for (let i = 0; i < data.rating; i++) { %>
+                        <span class="star">&#9733;</span>
+                    <% } %></h2>
+                    <h2><span class="label">Works done:</span> <%= data.noofratings %></h2>
+                    <h2><span class="label">Email:</span> <%= data.email %></h2>
+                    <h2><span class="label">Contact:</span> <%= data.contact %></h2>
+                    <h2><span class="label">Description:</span> <%= data.description %></h2>
+                </div>
+                <div id="imgbook">
+                    <img src="./images/<%=data.profession%>.jpeg" alt="workerimage">
+                </div>
             </div>
-        <% }); %>
-        <button><a href="/bookings">Book Now</a></button>
+            <button class="button"><a href="/bookings"><span class="button-content">Book now</span></a></button>
+            <div id="ratecontainer">
+                <h1>Reviews</h1>
+                <% data.reviews.forEach(function(review) { %>
+                    <div class="record">
+                        <h3><%= review.reviewer %></h3>
+                        <p><%= review.review %></p>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+        </div>
     </div>
 </body>
 </html>
