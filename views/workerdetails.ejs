@@ -22,6 +22,8 @@
     </header>
     <div id="wrapper">
         <div id="container">
+            <div class="title">WORKER DETAILS
+            </div>
             <div id="firstsec">
                 <div id="deetscontainer">
                     <h2><span class="label">Name:</span> <%= data.name %></h2>
@@ -41,12 +43,15 @@
             <button class="button"><a href="/bookings"><span class="button-content">Book now</span></a></button>
             <div id="ratecontainer">
                 <h1>Reviews</h1>
-                <% data.reviews.forEach(function(review) { %>
-                    <div class="record">
-                        <h3><%= review.reviewer %></h3>
-                        <p><%= review.review %></p>
-                    </div>
-                <% }); %>
+                <div id="reviewgrid">
+                    <% data.reviews.forEach(function(review) { %>
+                        <div class="record">
+                            <h3><%= review.reviewer %></h3>
+                            <p><%= review.review %></p>
+                        </div>
+                    <% }); %>
+                </div>
+                
             </div>
         </div>
         </div>
