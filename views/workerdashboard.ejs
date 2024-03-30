@@ -25,22 +25,28 @@
      <h1>booking deets</h1>
     <% books.forEach(function(book,index) { %>
         <div id="book<%= index %>">
-            <h2>Name: <%= book.userid.name %></h2>
-            <p>Email: <%= book.userid.email %></p>
-            <p>Address: <%= book.userid.address %></p>
-            <p>City: <%= book.userid.city %></p>
-            <p>Pincode: <%= book.userid.pincode %></p>
-            <p>Contact: <%= book.userid.contact %></p>
-            <P>Problem: <%= book.problem %></P>
+            <p><strong>Problem title:</strong><%= book.problem %></p>
+            <p><strong>Problem description:</strong><%= book.problemStatement %></p>
+            <p><strong>Payment Status:</strong> <%= book.paymentstatus %></p>
+            <p><strong>Booking Status:</strong> <%= book.bookingstatus %></p>
+            <p><strong>Base Price:</strong> <%= book.baseprice %></p>
+            <p><strong>Location:</strong> <%= book.locationLink %></p>
+            <p><strong>Date:</strong> <%= book.date %></p>
+            <p><strong>Time:</strong> <%= book.time %></p>
             <div>
-                <button onclick="accepted('<%= index %>','<%= book._id %>')" id="accept<%= index %>">Accept</button>
-                <button style="display: none;" onclick="cancel('<%= index %>','<%= book._id %>')" id="cancel<%= index %>">Cancel</button>
-                <button onclick="rejected('<%= index %>','<%= book._id %>')" id="reject<%= index %>">Reject</button>
-                <button style="display: none;" onclick="reqpayment('<%= index %>','<%= book._id %>')" id="requestPaymentButton<%= index %>">Request Payment</button>
+                <% if (book.bookingstatus === 'pending') { %>
+                    <button onclick="accepted('<%= index %>','<%= book._id %>')" id="accept<%= index %>">Accept</button>
+                    <button onclick="rejected('<%= index %>','<%= book._id %>')" id="reject<%= index %>">Reject</button>
+                    
+                <% } else { %>
+                    <% if (book.paymentstatus === 'pending') { %>
+                        <button  onclick="reqpayment('<%= index %>','<%= book._id %>')" id="requestPaymentButton<%= index %>">Request Payment</button>
+                    <% } %>
+                    <button  onclick="cancel('<%= index %>','<%= book._id %>')" id="cancel<%= index %>">Cancel</button>
+                <% } %>
             </div>
-            
         </div>
     <% }); %>
     <script src="/scripts/workerdashboard.js"></script>
-        </body>
-        </html>
+</body>
+</html>

@@ -70,7 +70,7 @@ app.route("/workerlogin")
         await Workers.findOne({ email: email, password: password }).then(async(data) => {
             if (data) {
                 req.session.workmyid = data.id;
-                await Bookings.find({ workerid: data.id, bookingstatus: { $in: ["pending", "accepted"] } })
+                await Bookings.find({ workerid: data.id, bookingstatus: { $in: ["pending", "done"] } })
                     .populate('userid', 'name email address city pincode contact')
                     .then((books) => {
                         res.render('workerdashboard', { books, data });
@@ -118,7 +118,6 @@ app.route("/bookconfirm")
         const problemStatement = req.body.problemStatement;
         const booking = new Bookings({ workerid, userid, date, time, locationLink, problem, problemStatement });
         await booking.save().then((data) => {
-            console.log(data);
             res.redirect('/userdashboard');
         });
     });
@@ -204,6 +203,9 @@ app.route("/acceptbooking")
         .post(async (req, res) => {
             const bookingId = req.body.bookingid;
             await Bookings.findOneAndUpdate({ _id: bookingId }, { $set: { paymentstatus: "paid" } })
+            .then(() => {
+                res.redirect('/userdashboard');
+            })
                 .catch((error) => {
                     console.log(error);
                     res.send('Failed to update payment status');
@@ -253,8 +255,13 @@ app.route("/acceptbooking")
                             noofratings: worker.noofratings + 1,
                             rating: newRating,
                             $push: { reviews: newReview }
-                        }).then(() => {
-                            res.send("done");
+                        }).then(async() => {
+                            await Bookings.findByIdAndUpdate(bookingid, { reviewstatus: "done" }).then(() => {
+                                res.redirect('/userdashboard');
+                            }).catch(err => {
+                                console.error("Error updating booking:", err);
+                                res.status(500).send("Error updating booking");
+                            });
                         }).catch(err => {
                             console.error("Error updating worker:", err);
                             res.status(500).send("Error updating worker");

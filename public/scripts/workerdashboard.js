@@ -1,6 +1,8 @@
  
         function reqpayment(index,id){
+           
             alert('Payment requested');
+            window.location.reload()
             fetch('/requestpayment',{
                 method:'POST',
                 headers:{
@@ -12,13 +14,8 @@
 
         function rejected(index,id){
             alert('Booking Rejected')
-            const accept=document.getElementById('accept'+index)
-            const requestPaymentButton=document.getElementById('requestPaymentButton'+index)
-            const cancel=document.getElementById('cancel'+index)
-            const reject=document.getElementById('reject'+index)
-            reject.style.display='none'
-            cancel.style.display='block'
-            accept.style.display='none'
+            window.location.reload()
+      
             fetch('/rejectbooking', {
                 method: 'POST',
                 headers: {
@@ -28,14 +25,7 @@
             })
         }
         function cancel(index,id){
-            const accept=document.getElementById('accept'+index)
-            const requestPaymentButton=document.getElementById('requestPaymentButton'+index)
-            const cancel=document.getElementById('cancel'+index)
-            const reject=document.getElementById('reject'+index)
-            reject.style.display='block'
-            cancel.style.display='none'
-             accept.style.display='block'
-             requestPaymentButton.style.display='none'
+            window.location.reload()
              fetch('/cancelstatus',{
                 method:'POST',
                 headers:{
@@ -45,15 +35,7 @@
              })
         }
         function accepted(index,id){
-            alert('Booking accepted')
-            const accept=document.getElementById('accept'+index)
-            const requestPaymentButton=document.getElementById('requestPaymentButton'+index)
-            const cancel=document.getElementById('cancel'+index)
-            const reject=document.getElementById('reject'+index)
-            reject.style.display='none'
-            cancel.style.display='block'
-            accept.style.display='none'
-            requestPaymentButton.style.display='block'
+            window.location.reload();
             fetch('/acceptbooking', {
                 method: 'POST',
                 headers: {

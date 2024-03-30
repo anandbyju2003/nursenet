@@ -37,6 +37,7 @@ const bookingSchema=new Schema({
   problemStatement:String,
   paymentstatus:{type:String,default:'pending'},
   bookingstatus:{type:String,default:'pending'},
+  reviewstatus:{type:String,default:'pending'},
   baseprice:{type:Number,default:700},
 });
 module.exports = {

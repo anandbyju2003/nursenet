@@ -73,16 +73,23 @@ select{
     color:#0355cc
 }
 .record {
-    background: rgba( 0, 0, 0, 0.6 );
-backdrop-filter: blur( 4px );
--webkit-backdrop-filter: blur( 4px );
+    background: rgba(0, 0, 0, 0.637);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 3px );
+    -webkit-backdrop-filter: blur( 3px );
     border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.18);
     width: 500px;
     padding: 10px;
     font-family: Poppins;
     margin-bottom: 10px;
-    color:white;
+    color:rgb(255, 255, 255);
     border:2px solid red;
+    filter:saturate(2);
+}
+.record:hover{
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.01);
 }
 .star{
     font-size: 25px;
@@ -94,7 +101,7 @@ backdrop-filter: blur( 4px );
     border:3px solid rgb(87, 244, 87);
 }
 .available{
-    color:rgb(103, 238, 103);
+    color:rgb(41, 188, 41);
 }
 .busy{
     color:rgb(252, 67, 67);
@@ -122,9 +129,6 @@ h1{
     transition: 0.4s;
    }
    
-   #bottone1:hover {
-    box-shadow: 7px 5px 56px -14px #0B3C49;
-   }
    
    #bottone1:active {
     transform: scale(0.97);
@@ -170,3 +174,7 @@ h1{
     outline: none;
   }
 /* for user input ends */
+.star{
+    font-size: 25px;
+    color: #f1c40f;
+}
