@@ -13,10 +13,12 @@
         <div id="title">SERVICESCAPE</div>
         <nav>
           <ul>
-              <li>HOME</li>
-              <li>ABOUT</li>
-              <li><a href="/userdashboard">DASHBOARD</a></li>
-              <li>LOGIN</li>
+            <a href="/"><li>HOME</li></a>
+                <a href="/#thirdsec"><li>SERVICES</li></a>
+                <a href="/userdashboard"><li>DASHBOARD</li></a>
+                <a href="/userprofileedit"><li>PROFILE</li></a>
+                <a href="/about"><li>ABOUT</li></a>
+                <a href="/logout"><li>LOGOUT</li></a>
           </ul>
       </nav>
     </header>
@@ -28,7 +30,7 @@
                 <div id="deetscontainer">
                     <h2><span class="label">Name:</span> <%= data.name %></h2>
                     <h2><span class="label">City:</span> <%= data.city %></h2>
-                    <h2><span class="label">Rating:</span><% for (let i = 0; i < data.rating; i++) { %>
+                    <h2><span class="label">Rating:</span><% for (let i = 1; i < data.rating; i++) { %>
                         <span class="star">&#9733;</span>
                     <% } %></h2>
                     <h2><span class="label">Works done:</span> <%= data.noofratings %></h2>

@@ -14,24 +14,42 @@
         <div id="title">SERVICESCAPE</div>
         <nav>
             <ul>
-                <li>HOME</li>
-                <li>ABOUT</li>
-                <li><a href="/userprofileedit">PROFILE</a></li>
-                <li>LOGIN</li>
+                <a href="/"><li>HOME</li></a>
+              <a href="/#thirdsec"><li>SERVICES</li></a>
+              <a href="/userdashboard"><li>DASHBOARD</li></a>
+              <a href="/userprofileedit"><li>PROFILE</li></a>
+              <a href="/about"><li>ABOUT</li></a>
+              <a href="/logout"><li>LOGOUT</li></a>
             </ul>
         </nav> 
     </header>
    <div id="formwrapper">
     <form class="form" id="form" action="/userprofileedit" method="post">
-        <span class="title">PROFILE UPDATE</span>
-        <label for="address" class="label">Address</label>
+        <span class="title">PROFILE</span>
+        <div id="infoflex">
+            <div>
+                <label for="name" class="label">Name</label>
+            <input type="text" id="name" name="name" required="" disabled class="input" value="<%= data.name || '' %>">
+            </div>
+            <div>
+                <label for="email" class="label">Email</label>
+                <input type="email" id="email" name="email" required="" disabled class="input" value="<%= data.email || '' %>">
+            </div>
+        </div>
+        <div id="infoflex">
+            <div>
+                <label for="address" class="label">Address</label>
         <input type="text" id="address" name="address" required="" class="input" value="<%= data.address || '' %>">
+            </div>
+            <div>
+                <label for="city" class="label">City</label>
+        <input type="text" id="city" name="city" required="" class="input" value="<%= data.city || '' %>">
+            </div>
+        </div>
         <label for="contact" class="label">Contact</label>
         <input type="text" id="contact" name="contact" required="" class="input" value="<%= data.contact || '' %>">
         <label for="pincode" class="label">Pincode</label>
         <input type="text" id="pincode" name="pincode" required="" class="input" value="<%= data.pincode || '' %>">
-        <label for="city" class="label">City</label>
-        <input type="text" id="city" name="city" required="" class="input" value="<%= data.city || '' %>">
         <label for="password" class="label">Password</label>
         <input type="password" id="password" name="password" required="" class="input" value="<%= data.password || '' %>">
         <button type="submit" class="submit">Update</button>

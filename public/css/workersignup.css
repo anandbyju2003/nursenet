@@ -39,7 +39,6 @@ ul {
 ul li {
     list-style-type: none;
     font-family: Poppins;
-    font-size: 17px;
 }
 a{
     text-decoration: none;
@@ -70,7 +69,7 @@ header {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 30%;
+    width: 35%;
     padding: 20px;
     border-radius: 20px;
     font-family: poppins;
@@ -152,11 +151,11 @@ header {
   }
   
   .form label .input + span {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.5) !important;
     position: absolute;
     left: 10px;
     top: 0px;
-    font-size: 0.9em;
+    font-size: 0.9em !important;
     cursor: text;
     transition: 0.3s ease;
   }
@@ -188,11 +187,15 @@ header {
     transform: .3s ease;
     background-color: #00bfff;
   }
-  
   .submit:hover {
     background-color: #00bfff96;
   }
   
+  textarea {
+    resize: none;
+    height: 100px; 
+    font-family: poppins;
+  }
   @keyframes pulse {
     from {
       transform: scale(0.9);

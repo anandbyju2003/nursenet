@@ -268,7 +268,7 @@ app.route("/acceptbooking")
                 .then(async(data) => {
                     await Workers.findById(data.workerid).then(async(worker) => {
                         const newRating = (Number(worker.rating) + Number(rating)) / 2;
-                        const newReview = { reviewer: data.userid.name, review: review };
+                        const newReview = { reviewer: data.userid.name, review: review,rating:rating };
                         await Workers.findByIdAndUpdate(data.workerid, {
                             noofratings: worker.noofratings + 1,
                             rating: newRating,
@@ -304,7 +304,15 @@ app.route("/acceptbooking")
                     res.sendStatus(500);
                 });
             });
-
+        app.route('/about')
+            .get((req, res) => {
+                res.sendFile(__dirname + '/public/about.html');
+            });
+        app.route('/logout')
+            .get((req, res) => {
+                req.session.destroy();
+                res.redirect('/');
+            });
         app.get('/favicon.ico', (req, res) => {
             res.status(204);
         });

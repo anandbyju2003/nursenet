@@ -13,10 +13,13 @@
         <div id="title">SERVICESCAPE</div>
         <nav>
           <ul>
-              <li>HOME</li>
-              <li>ABOUT</li>
-              <li><a href="/workerdashboard">DASHBOARD</a></li>
-              <li>LOGIN</li>
+            <a href="/"><li>HOME</li></a>
+            <a href="/#thirdsec"><li>SERVICES</li></a>
+            <a href="/workerdashboard"><li>DASHBOARD</li></a>
+            <a href="/workerprofileedit"><li>PROFILE</li></a>
+            <a href="/about"><li>ABOUT</li></a>
+            <a href="/logout"><li>LOGOUT</li></a>
+                  
           </ul>
       </nav>
     </header>
@@ -28,7 +31,7 @@
                 <div id="deetscontainer">
                     <h2><span class="label">Name:</span> <%= data.name %></h2>
                     <h2><span class="label">City:</span> <%= data.city %></h2>
-                    <h2><span class="label">Rating:</span><% for (let i = 0; i < data.rating; i++) { %>
+                    <h2><span class="label">Rating:</span><% for (let i = 1; i < data.rating; i++) { %>
                         <span class="star">&#9733;</span>
                     <% } %></h2>
                     <h2><span class="label">Works done:</span> <%= data.noofratings %></h2>
@@ -57,7 +60,11 @@
                 <div id="reviewgrid">
                     <% data.reviews.forEach(function(review) { %>
                         <div class="record">
-                            <h3><%= review.reviewer %></h3>
+                            <h3><%= review.reviewer %>
+                                <% for (let i = 1; i <= review.rating; i++) { %>
+                                    <span class="star">&#9733;</span>
+                                <% } %>
+                            </h3>
                             <p><%= review.review %></p>
                         </div>
                     <% }); %>

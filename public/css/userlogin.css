@@ -33,6 +33,12 @@ ul li {
     font-family: Poppins;
     color:black;
 }
+a{
+  text-align: center;
+  color:black;
+  font-family: poppins;
+  text-decoration: none;
+}
 li:hover{
     color: #0355cc;
 }

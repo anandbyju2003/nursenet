@@ -14,7 +14,7 @@ body::-webkit-scrollbar{
     display: none;
 }
 nav {
-    width: 40%;
+    width: 50%;
 }
 
 #title {
@@ -33,7 +33,8 @@ ul {
 ul li {
     list-style-type: none;
     font-family: Poppins;
-    color:black
+    color:black;
+    font-size: 17px;
 }
 li:hover{
     color: #0355cc;

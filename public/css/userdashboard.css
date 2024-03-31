@@ -14,7 +14,7 @@ body{
 }
 
 nav {
-    width: 40%;
+    width: 50%;
 }
 
 #title {
@@ -38,7 +38,9 @@ ul {
 
 ul li {
     list-style-type: none;
-    font-family: Poppins;
+    font-family: poppins;
+    font-size: 17px;
+    font-weight: 500;
 }
 a{
     text-decoration: none;
@@ -72,7 +74,7 @@ header {
     padding: 10px;
     margin: 10px;
     color:white;
-    font-family: monospace;
+    font-family:monospace;
     letter-spacing: 2px;
     font-size: 22px;
     word-spacing: 2px;
