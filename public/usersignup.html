@@ -1,21 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <title>Document</title>
-</head>
-<body>
-    <form id="form" action="/usersignup" method="post">
-        <input type="text" id="name"  name='name'placeholder="Enter your name">
-        <input type="text" id="email" name='email'placeholder="Enter your class">
-        <input type="text" id="address" name="address" placeholder="Enter your address">
-        <input type="text" id="contact" name="contact" placeholder="Enter your contact number">
-        <input type="text" id="pincode" name="pincode" placeholder="Enter your pincode">
-        <input type="text" id="city" name="city" placeholder="Enter your city">
-        <input type="password" id="password" name="password" placeholder="Enter your password">
-        <button type="submit">Submit</button>
-    </form>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/usersignup.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:wght@500&display=swap" rel="stylesheet">
+        <title>Document</title>
+    </head>
+    <body>
+        <header>
+            <div id="title">SERVICESCAPE</div>
+            <nav>
+                <ul>
+                    <li>HOME</li>
+                    <li>ABOUT</li>
+                    <li><a href="#">PROFILE</a></li>
+                    <li>LOGIN</li>
+                </ul>
+            </nav> 
+        </header>
+        <div id="wrapper">
+            <form class="form" id="form" action="/usersignup" method="post">
+                <p class="title">Register as user </p>
+                    <label>
+                        <input type="text" id="name" class="input" name='name' required="">
+                        <span>Name</span>
+                    </label>
+                    <label>
+                        <input type="text" id="email" class="input" name='email' required="">
+                        <span>Email</span>
+                    </label> 
+
+                    <label>
+                        <input class="input" type="text" id="address" name="address" required="">
+                        <span>Address</span>
+                    </label>
+                    <label>
+                        <input class="input" type="text" id="contact" name="contact" required="">
+                        <span>Contact</span>
+                    </label>
+                    <label>
+                        <input class="input" type="text" id="pincode" name="pincode" required="">
+                        <span>Pincode</span>
+                    </label>
+                    <label>
+                        <input class="input" type="text" id="city" name="city" required="">
+                        <span>City</span>
+                    </label>
+                    <label>
+                        <input class="input" type="password" id="password" name="password" required="">
+                        <span>Password</span>
+                    </label>
+                <button type="submit"  class="submit">Submit</button>
+                <p class="signin">Already have an acount ? <a href="/userlogin">Signin</a> </p>
+            </form>
+        </div>
+   
 </body>
 </html>

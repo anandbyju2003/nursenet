@@ -31,7 +31,7 @@ ul {
 ul li {
     list-style-type: none;
     font-family: Poppins;
-    color:white;
+    color:black;
 }
 li:hover{
     color: #0355cc;

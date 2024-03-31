@@ -35,3 +35,13 @@ function paynow(id,index){
         dashboard.style.opacity = '1';
     }, 100);
 }
+function cancel(index,id){
+     fetch('/deleteentryuser',{
+        method:'POST',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify({bookingid:id})
+     })
+     window.location.reload()
+}

@@ -20,7 +20,7 @@ const workerSchema = new Schema({
   pincode: Number,
   contact: Number,
   profession: String,
-  rating: { type: Number, default: 0 },
+  rating: { type: Number, default: 2 },
   noofratings: { type: Number, default: 0 },
   reviews: [{ reviewer: String, review: String }],
   password: String,

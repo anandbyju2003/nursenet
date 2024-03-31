@@ -30,7 +30,7 @@ app.route('/usersignup')
         const {name,email,address,city,pincode,contact,password} = req.body;
         const user = new Users({name:name, email:email, address:address, city:city, pincode:pincode, contact:contact,password:password });
         await user.save().then(() => {
-            res.send('Data saved');
+            res.redirect('/userlogin');
         });
     });
 
@@ -57,7 +57,7 @@ app.route('/workersignup')
         const { name, description, email, address, city, pincode, contact, profession, password } = req.body;
         const worker = new Workers({ name, description, email, address, city, pincode, contact, profession, password });
         await worker.save().then(() => {
-            res.send('Data saved');
+            res.redirect('/workerlogin');
         });
     });
 
@@ -73,13 +73,22 @@ app.route("/workerlogin")
                 await Bookings.find({ workerid: data.id, bookingstatus: { $in: ["pending", "done"] } })
                     .populate('userid', 'name email address city pincode contact')
                     .then((books) => {
-                        res.render('workerdashboard', { books, data });
+                        res.render('workerprofile', { books, data });
                     });
             }
             else {
                 res.send('failed to login');
             }
         });
+    });
+app.route('/workerdashboard')
+    .get(async (req, res) => {
+        const workerid = req.session.workmyid;
+        await Bookings.find({ workerid: workerid, bookingstatus: { $in: ["pending", "done"] } })
+            .populate('userid', 'name email address city pincode contact')
+            .then((books) => {
+                res.render('workerdashboard', { books });
+            });
     });
 app.route("/userhome")
     .get(async (req, res) => {
@@ -138,21 +147,18 @@ app.route("/acceptbooking")
         const bookingStatus = req.body.bookingstatus;
 
         await Bookings.findByIdAndUpdate(bookingId, { $set: { bookingstatus: bookingStatus } })
-            .then(() => {
-                res.send('Booking status updated');
-            })
             .catch((error) => {
                 console.log(error);
                 res.send('Failed to update booking status');
             });
     });
 
-    app.route("/cancelstatus")
+    app.route("/deleteentryuser")
         .post(async (req, res) => {
             const bookingId = req.body.bookingid;
-            await Bookings.findByIdAndUpdate(bookingId, { $set: { bookingstatus: "pending" } })
+            await Bookings.findByIdAndDelete(bookingId)
                 .then(() => {
-                    res.send('Booking status updated');
+                    res.redirect('/userdashboard');
                 })
                 .catch((error) => {
                     console.log(error);
@@ -160,6 +166,18 @@ app.route("/acceptbooking")
                 });
         });
 
+        app.route("/deleteentryworker")
+        .post(async (req, res) => {
+            const bookingId = req.body.bookingid;
+            await Bookings.findByIdAndDelete(bookingId)
+                .then(() => {
+                    res.redirect('/workerdashboard');
+                })
+                .catch((error) => {
+                    console.log(error);
+                    res.send('Failed to update booking status');
+                });
+        });
     app.route('/rejectbooking')
         .post(async (req, res) => {
             const bookingId = req.body.bookingid;
@@ -275,6 +293,18 @@ app.route("/acceptbooking")
                     res.status(500).send("Error finding booking");
                 });
         });
+        app.route('/workerstatus')
+            .post(async(req, res) => {
+                const status = req.body.status;
+                const workerid = req.session.workmyid;
+                await Workers.findByIdAndUpdate(workerid, { status: status }).then(() => {
+                    res.sendStatus(200);
+                }).catch((error) => {
+                    console.log(error);
+                    res.sendStatus(500);
+                });
+            });
+
         app.get('/favicon.ico', (req, res) => {
             res.status(204);
         });

@@ -2,7 +2,7 @@
         function reqpayment(index,id){
            
             alert('Payment requested');
-            window.location.reload()
+            
             fetch('/requestpayment',{
                 method:'POST',
                 headers:{
@@ -10,11 +10,11 @@
                 },
                 body:JSON.stringify({bookingid:id})
             })
+            window.location.reload()
         }
 
         function rejected(index,id){
             alert('Booking Rejected')
-            window.location.reload()
       
             fetch('/rejectbooking', {
                 method: 'POST',
@@ -23,19 +23,20 @@
                 },
                 body: JSON.stringify({ bookingstatus: 'rejected', bookingid: id })
             })
+            window.location.reload()
         }
         function cancel(index,id){
             window.location.reload()
-             fetch('/cancelstatus',{
+             fetch('/deleteentryworker',{
                 method:'POST',
                 headers:{
                     'Content-Type': 'application/json'
                 },
                 body:JSON.stringify({bookingid:id})
              })
+            window.location.reload() 
         }
         function accepted(index,id){
-            window.location.reload();
             fetch('/acceptbooking', {
                 method: 'POST',
                 headers: {
@@ -43,4 +44,5 @@
                 },
                 body: JSON.stringify({ bookingstatus:'done',bookingid: id })
             })
+            window.location.reload()
         }       
