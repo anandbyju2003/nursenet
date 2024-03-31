@@ -70,6 +70,7 @@ header {
     border:2px solid red;
     filter:saturate(2);
     width: 50%;
+    max-width: 70%;
     padding: 10px;
     margin: 10px;
     color:white;
