@@ -10,6 +10,11 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="preloader">
+        <div class="bar">
+            <div class="ball"></div>
+        </div>
+    </div>
     <header>
         <div id="title">SERVICESCAPE</div>
         <nav>
@@ -55,5 +60,11 @@
         <button type="submit" class="submit">Update</button>
       </form>
    </div>
+   <script>
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        preloader.style.display = 'none';
+    });
+</script>
 </body>
 </html>

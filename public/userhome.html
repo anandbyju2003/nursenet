@@ -8,6 +8,11 @@
     <link rel="stylesheet"  href="./css/userhome.css">
   </head>
   <body>
+    <div id="preloader">
+      <div class="bar">
+          <div class="ball"></div>
+      </div>
+  </div>
     <header>
       <div id="title">SERVICESCAPE</div>
       <nav>
@@ -39,6 +44,12 @@
             <div class="grid-item"><a href="/userhome?profession=pestcontrol&login=true"><img src="images/pestcontrol.jpeg" alt="Pest Control"><span id="prof">PEST CONTROL</span></a></div>
             <div class="grid-item"><a href="/userhome?profession=locksmith&login=true"><img src="images/mechanic.jpeg" alt="Mechanic"><span id="prof">MECHANIC</span></a></div>
         </div>
-     </section>       
+     </section> 
+     <script>
+      window.addEventListener('load', () => {
+          const preloader = document.getElementById('preloader');
+          preloader.style.display = 'none';
+      });
+  </script>      
     </body>
 </html>

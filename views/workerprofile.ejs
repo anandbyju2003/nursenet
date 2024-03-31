@@ -9,6 +9,11 @@
     <link rel="stylesheet"  href="./css/workerprofile.css">
 </head>
 <body>
+    <div id="preloader">
+        <div class="bar">
+            <div class="ball"></div>
+        </div>
+    </div>
     <header>
         <div id="title">SERVICESCAPE</div>
         <nav>
@@ -75,5 +80,11 @@
         </div>
     </div>
     <script src="/scripts/workerprofile.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.style.display = 'none';
+        });
+    </script>
 </body>
 </html>
