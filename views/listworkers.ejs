@@ -60,7 +60,7 @@
                 <p class="<%= record.status === 'busy' ? 'busy' : 'available' %>">Status: <%= record.status %></p>
                 <div class="rating">
                     <label>Rating:</label>
-                    <% for (let i = 0; i < record.rating; i++) { %>
+                    <% for (let i = 1; i < record.rating; i++) { %>
                         <span class="star">&#9733;</span>
                     <% } %>
                 </div>

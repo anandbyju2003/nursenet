@@ -53,7 +53,12 @@
                 <div id="reviewgrid">
                     <% data.reviews.forEach(function(review) { %>
                         <div class="record">
-                            <h3><%= review.reviewer %></h3>
+                            <h3><%= review.reviewer %>
+                                <span class="rating"><% for (let i = 1; i < review.rating; i++) { %>
+                                    <span class="star">&#9733;</span>
+                                <% } %></span>
+                            </h3>
+
                             <p><%= review.review %></p>
                         </div>
                     <% }); %>
