@@ -20,11 +20,6 @@ nav {
 #firstsec{
     background-color: #d1e3ff;
 }
-@media (max-width: 768px) {
-    nav {
-        width: 100%;
-    }
-}
 
 #title {
     padding-left: 3%;
