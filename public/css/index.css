@@ -197,7 +197,6 @@ button {
 .card {
     height: 160px;
     width: 224px;
-    background: rgb(103, 225, 255);
     transition: all 0.4s;
     border-radius: 10px;
     font-size: 30px;
@@ -252,8 +251,7 @@ button {
 .testgridimg{
     height: 160px;
     width: 224px;
-    border-radius: 10px;
-    border:1px solid black;
+    border-radius: 5px;
 }  
 .ball {
     position: relative;

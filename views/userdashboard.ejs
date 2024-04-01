@@ -30,59 +30,64 @@
     </header>
     <div id="dashboard">
         <h1>DASHBOARD</h1>
-        <% data.forEach(function(booking,index) { %>
-            <div class="booking <% if (booking.bookingstatus == 'done') { %>bookingaccept<% } else if (booking.bookingstatus == 'rejected') { %>bookingreject<% } else if (booking.bookingstatus == 'pending') { %>bookingpending<% }%> <%if (booking.bookingstatus == 'done' && booking.paymentstatus == 'paid' && booking.reviewstatus == 'done') { %>alldone<% } %>"  id="booking<%= index %>">
-                <p><strong>Worker Name:   </strong><%= booking.workerid.name %> <strong>Profession:   </strong><%= booking.workerid.profession %></p>
-                <p><strong>Email:   </strong><%= booking.workerid.email %>  <strong>Contact:   </strong><%= booking.workerid.contact %></p>
-                <p><strong>Date:   </strong> <%= booking.date.toISOString().slice(0, 10).split('-').reverse().join('/') %>  <strong>Time:   </strong> <%= booking.time %></p>
-                <p><strong>Problem:</strong><%= booking.problem %></p>
-                <p class="<% if (booking.paymentstatus == 'paid') { %>paypaid<% } else if (booking.paymentstatus == 'pending') { %>paypending<% }%>"> <strong>Payment:</strong> <%= booking.paymentstatus %></p>
-                <p  class="<% if (booking.bookingstatus == 'done') { %>bookaccept<% } else if (booking.bookingstatus == 'rejected') { %>bookreject<% } else if (booking.bookingstatus == 'pending') { %>bookpending<% } %>"><strong>Booking Status:</strong> <%= booking.bookingstatus %></p>
-                <p><strong>Amount:</strong> <%= booking.baseprice %></p>
-              
-                <% if (booking.paymentstatus === 'pending') { %>
-                <button onclick="cancelBooking('<%= booking._id %>','<%= index %>')" class="button">
-                    <span class="button_lg">
-                        <span class="button_sl"></span>
-                        <span class="button_text">Cancel</span>
-                    </span>
-                </button>
-                <% } %>
-                <% if (booking.paymentstatus === 'requested' && booking.bookingstatus === 'done') { %>
-                <button onclick="paydemo('<%= booking._id %>','<%= index %>')" class="button" >
-                    <span class="button_lg">
-                        <span class="button_sl" style="background-color: rgb(76, 131, 251);"></span>
-                        <span class="button_text">Pay now</span>
-                    </span>
-                </button>
-                <% } %>
-                <% if (booking.paymentstatus === 'paid' && booking.reviewstatus === 'pending') { %>
-                <form action="/rateworker" method="post">
-                    <p><strong><label for="rating">Rating (out of 5):</label></strong></p>
-                    <input type="number" id="rating" name="rating" min="1" max="5" required>
-                    <br>
-                    <p><strong><label for="review">Review:</label></strong></p>
-                    <textarea id="review" name="review" rows="4" cols="50" required></textarea>
-                    <br>
-                    <input type="hidden" name="bookingid" value="<%= booking._id %>">
-                    <button type="submit" class="button" >
-                        <span class="button_lg">
-                            <span class="button_sl" style="background-color: rgb(44, 197, 105);"></span>
-                            <span class="button_text">Submit</span>
-                        </span>
-                    </button>
-                </form>
-                <% } %>
-                <% if (booking.paymentstatus === 'paid' && booking.reviewstatus === 'done' && booking.bookingstatus === 'done') { %>
-                  <button onclick="cancel('<%= index %>','<%= booking._id %>')" id="cancel<%= index %>" class="button">
-                    <span class="button_lg">
-                        <span class="button_sl"></span>
-                        <span class="button_text">Delete</span>
-                    </span>
-                </button> 
-                <% } %>               
-            </div>
-        <% }); %>
+            <% data.forEach(function(booking,index) { %>
+              <div class="booking <% if (booking.bookingstatus == 'done') { %>bookingaccept<% } else if (booking.bookingstatus == 'rejected') { %>bookingreject<% } else if (booking.bookingstatus == 'pending') { %>bookingpending<% }%> <%if (booking.bookingstatus == 'done' && booking.paymentstatus == 'paid' && booking.reviewstatus == 'done') { %>alldone<% } %>"  id="booking<%= index %>">
+              <div id="detailwrapper">
+                <p><strong>Worker Name:</strong> <%= booking.workerid.name %> <strong>Profession:</strong> <%= booking.workerid.profession %></p>
+                  
+                  <p><strong>Email:</strong> <%= booking.workerid.email %><strong>Contact:</strong> <%= booking.workerid.contact %></p>
+                  
+                  <p><strong>Date:</strong> <%= booking.date.toISOString().slice(0, 10).split('-').reverse().join('/') %><strong>Time:</strong> <%= booking.time %></p>
+
+                  <p><strong>Problem:</strong><%= booking.problem %></p>
+                    <p class="<% if (booking.paymentstatus == 'paid') { %>paypaid<% } else if (booking.paymentstatus == 'pending') { %>paypending<% } else if (booking.paymentstatus == 'requested') { %>payrequested<% } %>"> <strong>Payment: <%= booking.paymentstatus %></strong> </p>
+                  <p  class="<% if (booking.bookingstatus == 'done') { %>bookaccept<% } else if (booking.bookingstatus == 'rejected') { %>bookreject<% } else if (booking.bookingstatus == 'pending') { %>bookpending<% } %>"><strong>Booking Status:  <%= booking.bookingstatus %></strong></p>
+                  <p><strong>Amount:</strong> <%= booking.baseprice %></p>
+                
+                  <% if (booking.paymentstatus === 'pending') { %>
+                  <button onclick="cancelBooking('<%= booking._id %>','<%= index %>')" class="button">
+                      <span class="button_lg">
+                          <span class="button_sl"></span>
+                          <span class="button_text">Cancel</span>
+                      </span>
+                  </button>
+                  <% } %>
+                  <% if (booking.paymentstatus === 'requested' && booking.bookingstatus === 'done') { %>
+                  <button onclick="paydemo('<%= booking._id %>','<%= index %>')" class="button" >
+                      <span class="button_lg">
+                          <span class="button_sl" style="background-color: rgb(28, 74, 172);"></span>
+                          <span class="button_text">Pay now</span>
+                      </span>
+                  </button>
+                  <% } %>
+                  <% if (booking.paymentstatus === 'paid' && booking.reviewstatus === 'pending') { %>
+                  <form action="/rateworker" method="post">
+                      <p><strong><label for="rating">Rating (out of 5):</label></strong></p>
+                      <input type="number" id="rating" name="rating" min="1" max="5" required>
+                      <br>
+                      <p><strong><label for="review">Review:</label></strong></p>
+                      <textarea id="review" name="review" rows="4" cols="50" required></textarea>
+                      <br>
+                      <input type="hidden" name="bookingid" value="<%= booking._id %>">
+                      <button type="submit" class="button" >
+                          <span class="button_lg">
+                              <span class="button_sl" style="background-color: rgb(13, 167, 74);"></span>
+                              <span class="button_text">Submit</span>
+                          </span>
+                      </button>
+                  </form>
+                  <% } %>
+                  <% if (booking.paymentstatus === 'paid' && booking.reviewstatus === 'done' && booking.bookingstatus === 'done') { %>
+                    <button onclick="cancel('<%= index %>','<%= booking._id %>')" id="cancel<%= index %>" class="button">
+                      <span class="button_lg">
+                          <span class="button_sl"></span>
+                          <span class="button_text">Delete</span>
+                      </span>
+                  </button> 
+                  <% } %>  
+              </div>
+              </div>
+          <% }); %>
     </div>
     <div id="modelwrapper">
         <div class="modal" style="display: none;" id="payment">
