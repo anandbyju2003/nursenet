@@ -312,3 +312,49 @@ button {
     justify-content: center;
     align-items: center;
 }
+@media (max-width: 768px) {
+ 
+  header{
+    display: block;
+  }
+  nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding-left:0;
+  }
+  ul{
+    width: 100%;
+  }
+  img{
+    width: 50%;
+    height: 50%;
+  }
+ 
+  #userbox h1{
+    font-size:20px;
+    height: 50%;
+    padding-left: 10%;
+    margin-bottom: none;
+  }
+  #usertext{
+    width: auto;
+    padding-left: 10%;
+    font-size: 12px;
+  }
+  button{
+    font-size: 10px;
+    padding: 0.5em 2em;
+    margin-left: 10%;
+
+  }
+  .label{
+    font-size: 10px;
+  }
+ #secondsection #userintro{
+  gap:15%
+ }
+ #secondsection{
+  padding-bottom: 5%;
+ }
+}
