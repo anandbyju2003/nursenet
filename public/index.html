@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="./css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Workbench&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Workbench&display=swap" rel="stylesheet">
 </head>
 <body>
     <section id="firstsec">
@@ -15,20 +15,19 @@
             
             <nav>
                 <ul>
-                    <li>HOME</li>
-                    <li>ABOUT</li>
-                    <li>CONTACT</li>
-                    <li>LOGIN</li>
+                    <a href="/"><li>HOME</li></a>
+                    <a href="/about"><li>ABOUT</li></a>
+                    <a href="/public/contact.html"><li>CONTACT</li></a>
+                    <a href="/adminlogin"><li>LOGIN</li></a>
                 </ul>
             </nav>
             <div id="title">NurseNet</div>
         </header>
         <div id="userintro">
-            <img src="./images/2.png">
             <div id="userbox">
                 <div>
                     <h1>
-                        Login as USER
+                        Login as User
                     </h1> 
                 </div>
                 <div id="usertext">
@@ -57,7 +56,7 @@
         <div id="userbox1">
             <div>
                 <h1>
-                    Login as NURSE
+                    Login as Nurse
                 </h1>
             </div>
             <div id="usertext1">
@@ -66,12 +65,12 @@
                 </p>
             </div>
             <div>
-                <button onclick="window.location.href = '/workerlogin';">
+                <button onclick="window.location.href = '/nurselogin';">
                     <span class="transition"></span>
                     <span class="gradient"></span>
                     <span class="label">LOGIN</span>
                   </button>
-                  <button onclick="window.location.href = '/workersignup';">
+                  <button onclick="window.location.href = '/nursesignup';">
                     <span class="transition"></span>
                     <span class="gradient"></span>
                     <span class="label">REGISTER</span>
@@ -79,7 +78,6 @@
             </div>
             
         </div>
-        <img  id='workerimg' src="./images/nurseimagehome.png" alt="firstsec">
     </div>
    </section>
 </body>

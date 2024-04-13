@@ -4,7 +4,7 @@
 }
 body{
     margin:0;
-    background:url(../images/24.jpg);
+    background:url(../images/n2.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -16,6 +16,8 @@ nav {
 }
 
 #title {
+  padding-top: 2%;
+  padding-right:55% ;
   text-align: center;
   font-family: Lato;
   font-size: 70px;
@@ -50,9 +52,9 @@ header {
 #login{
     margin:8% 0;
     display: flex;
-    justify-content: left;
-    align-items: left;
-    margin-left: 50px;
+    justify-content: right;
+    align-items: right;
+    margin-left: 100px;
     flex-direction: column;
 
 }
@@ -67,11 +69,11 @@ header {
     padding: 47px;
     padding-bottom: 57px;
     text-align: center;
-    color:#000000;
+    color:#ffffff;
     border-radius: 17px;
     padding-bottom: 50px;
     font-size: 1.3em;
-    font-family: poppins;
+    font-family: lato;
   }
   
   .login input[type="text"],

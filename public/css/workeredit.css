@@ -4,7 +4,7 @@
 }
 body{
     margin:0;
-    background:url(../images/back.jpg);
+    background:url(../images/n1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -14,7 +14,7 @@ body{
 }
 
 nav {
-    width: 50%;
+    width: 40%;
 }
 
 #title {

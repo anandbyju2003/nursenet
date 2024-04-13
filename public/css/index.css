@@ -1,21 +1,37 @@
 *{
-    box-sizing: border-box;
+    box-sizing:border-box;
 
 }
+
 body{
-    margin:0;
+    margin: 0px;
 }
 
 nav {
-    width: 40%;
+    width: 30%;
 }
 
 #firstsec{
-    background-color: #74a6fa;
+        margin:0;
+        background:url(../images/2.jpeg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        height: 100vh;
+        width: 100%;
 }
 #secondsection{
-    background-color: #a4c5fc;
-}
+        margin:0;
+        background:url(../images/n2.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        height: 100vh;
+        width: 100%;
+
+ }
 @media (max-width: 768px) {
     nav {
         width: 100%;
@@ -23,21 +39,33 @@ nav {
 }
 
 #title {
-    padding-left: 33%;
-    font-family: Workbench;
-    font-size: 60px;
-    font-weight: bold;
+    padding-left: 30%;
+    font-family: Lato;
+    font-size: 80px;
+    font-weight: bolder;
     color: #051838;
 }
+
 
 ul {
     display: flex;
     justify-content: space-around;
 }
 
+a{
+    text-decoration: none;
+    color: black;
+
+}
 ul li {
     list-style-type: none;
-    font-family: Poppins;
+    font-family: lato;
+}
+li:hover{
+    color: #ffffff;
+}
+a:hover,li:hover{
+    color: #ffffff;
 }
 
 header {
@@ -45,8 +73,9 @@ header {
     justify-content: left;
 }
 #userintro{
+    margin-left:250px;
     display: flex;
-    justify-content:flex-start;
+    justify-content:right;
 }
 #userbox{
     display: flex;
@@ -54,11 +83,12 @@ header {
     justify-content: center;
 
     width: 50%;
-    align-items: left;
+    align-items:right;
+    margin-top:120px;
 }
 #usertext{
     font-size: 16px;
-    font-family: Poppins;
+    font-family: Rubik;
     color: black;
     width:70%
 }
@@ -66,8 +96,9 @@ header {
 
 
 #userintro1{
+    margin-left: 55px;
     display: flex;
-    justify-content: right;
+    justify-content: left;
 }
 #userbox1{
     display: flex;
@@ -76,17 +107,18 @@ header {
 
     width: 50%;
     align-items: left;
+    margin-top:120px;
 }
 #usertext1{
     font-size: 16px;
-    font-family: Poppins;
+    font-family: Rubik;
     color: black;
     width:70%
 }
 #userbox1 h1{
     font-size: 40px;
-    font-family: Merriweather Sans;
-    font-weight: bold;
+    font-family: lato;
+    font-weight: bolder;
     color: #02327a;
 }
 
@@ -96,8 +128,8 @@ header {
 
 #userbox h1{
     font-size: 40px;
-    font-family: Merriweather Sans;
-    font-weight: bold;
+    font-family: lato;
+    font-weight: bolder;
     color: #02327a;
 }
 
@@ -108,7 +140,7 @@ button {
     font-size: 17px;
     padding: 1em 5em;
     font-weight: 500;
-    background: #1f2937;
+    background: #10151d;
     color: white;
     border: none;
     position: relative;
@@ -137,18 +169,7 @@ button {
     top: -1px;
   }
   
-  .transition {
-    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-    transition-duration: 500ms;
-    background-color: rgba(16, 185, 129, 0.6);
-    border-radius: 9999px;
-    width: 0;
-    height: 0;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
+
   
   button:hover .transition {
     width: 14em;
@@ -159,7 +180,7 @@ button {
     transform: scale(0.97);
   }
   
-#workerimg{
+#nurseimg{
     width: 43%;
     height: 70%;
     left: 150px;

@@ -4,7 +4,7 @@
 }
 body{
     margin:0;
-    background:url(../images/back.jpg);
+    background:url(../images/n21.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -15,15 +15,15 @@ body::-webkit-scrollbar{
   display: none;
 }
 nav {
-    width: 50%;
+    width: 40%;
 }
 
 #title {
     padding-left: 3%;
-    font-family: Mukta;
-    font-size: 40px;
-    font-weight: bold;
-    color: #0355cc;
+    font-family: lato;
+    font-size: 60px;
+    font-weight: bolder;
+    color: #051838;
 }
 
 ul {
@@ -37,7 +37,7 @@ ul li {
     font-size: 17px;
 }
 a:hover,li:hover{
-    color: #0355cc;
+    color: #ffffff;
 }
 header {
     display: flex;
@@ -181,19 +181,7 @@ a{
     position: relative;
     top: -1px;
   }
-  
-  .transition {
-    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-    transition-duration: 500ms;
-    background-color: rgba(16, 185, 129, 0.6);
-    border-radius: 9999px;
-    width: 0;
-    height: 0;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
+
   
   button:hover .transition {
     width: 14em;

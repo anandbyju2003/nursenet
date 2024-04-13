@@ -43,15 +43,15 @@ app.route("/userlogin")
         await Users.findOne({email:email,password:password}).then((data)=>{
             if(data){
                 req.session.myid=data.id;
-                res.sendFile(__dirname+'/public/userhome.html');
+                res.render('listworkers', { data });
             }
             else{
-                res.send('failed to login');
+                res.sendFile(__dirname+'/public/loginfail.html');
             }
         })});
-app.route('/workersignup')
+app.route('/nursesignup')
     .get((req, res) => {
-        res.sendFile(__dirname + '/public/workersignup.html');
+        res.sendFile(__dirname + '/public/nursesignup.html');
     })
     .post(async (req, res) => {
         const { name, description, email, address, city, pincode, contact, profession, password } = req.body;
@@ -61,9 +61,9 @@ app.route('/workersignup')
         });
     });
 
-app.route("/workerlogin")
+app.route("/nurselogin")
     .get((req, res) => {
-        res.sendFile(__dirname + '/public/workerlogin.html');
+        res.sendFile(__dirname + '/public/nurselogin.html');
     })
     .post(async (req, res) => {
         const { email, password } = req.body;
@@ -77,7 +77,7 @@ app.route("/workerlogin")
                     });
             }
             else {
-                res.send('failed to login');
+                res.sendFile(__dirname+'/public/loginfail.html');
             }
         });
     });
@@ -216,10 +216,15 @@ app.route("/acceptbooking")
                     res.send('Failed to cancel booking');
                 });
         });
-
-    app.route("/paynow")
+    app.route("/paydemo")
         .post(async (req, res) => {
             const bookingId = req.body.bookingid;
+            req.session.bookingId = bookingId;
+            res.sendFile(__dirname + '/public/payment.html');
+        });
+    app.route("/paynow")
+        .post(async (req, res) => {
+            const bookingId = req.session.bookingId;
             await Bookings.findOneAndUpdate({ _id: bookingId }, { $set: { paymentstatus: "paid" } })
             .then(() => {
                 res.redirect('/userdashboard');
@@ -315,6 +320,45 @@ app.route("/acceptbooking")
             });
         app.get('/favicon.ico', (req, res) => {
             res.status(204);
+        });
+    app.route("/adminlogin")
+        .get((req, res) => {
+            res.sendFile(__dirname + '/public/adminlogin.html');
+        })
+        .post(async(req, res) => {
+            const email = req.body.email;
+            const password = req.body.password;
+            if (email == process.env['ADMIN_EMAIL'] && password == process.env['ADMIN_PASSWORD']) {
+                res.sendFile(__dirname + '/public/adminhome.html');
+            } else {
+                res.sendFile(__dirname + '/public/loginfail.html');
+            }
+        });
+    app.route("/adminlistusers")
+        .get(async(req, res) => {
+            await Users.find().then((data) => {
+                res.render('adminlistusers', { data });
+            });
+        });
+    app.route("/adminlistworkers")
+        .get(async(req, res) => {
+            await Workers.find().then((data) => {
+                res.render('adminlistworkers', { data });
+            });
+        });
+    app.route("/admindeleteuser")
+        .get(async(req, res) => {
+            const userid = req.query.id;
+            await Users.findByIdAndDelete(userid).then(() => {
+                res.redirect('/adminlistusers');
+            });
+        });
+    app.route("/admindeleteworker")
+        .get(async(req, res) => {
+            const workerid = req.query.id;
+            await Workers.findByIdAndDelete(workerid).then(() => {
+                res.redirect('/adminlistworkers');
+            });
         });
     app.listen(3000, () => {
         console.log('Server is running on port 3000');

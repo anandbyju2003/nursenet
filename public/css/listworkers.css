@@ -4,7 +4,7 @@
 }
 body{
     margin:0;
-    background:url(../images/back.jpg);
+    background:url(../images/n21.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -15,15 +15,15 @@ body::-webkit-scrollbar{
     display: none;
 }
 nav {
-    width: 50%;
+    width: 40%;
 }
 
 #title {
-    padding-left: 3%;
-    font-family: Mukta;
-    font-size: 40px;
-    font-weight: bold;
-    color: #0355cc;
+    padding-left: 4%;
+    font-family: lato;
+    font-size: 60px;
+    font-weight: bolder;
+    color: #051838;
 }
 
 ul {
@@ -37,7 +37,7 @@ ul li {
     font-size: 17px;
 }
 a:hover,li:hover{
-    color: #0355cc;
+    color: #ffffff;
 }
 header {
     display: flex;
@@ -100,7 +100,7 @@ select{
     border:3px solid red;
 }
 .availablerec{
-    border:3px solid rgb(87, 244, 87);
+    border:3px solid rgb(10, 85, 117);
 }
 .available{
     color:rgb(41, 188, 41);
@@ -111,8 +111,8 @@ select{
 }
 h1{
     text-align: center;
-    font-family: poppins;
-    color:#0355cc;
+    font-family: lato;
+    color:#ffffff;
     margin: 3% 0;
 }
 /*for userdashboard button*/
@@ -124,7 +124,7 @@ h1{
     padding-bottom: 12px;
     padding-top: 12px;
     border-radius: 9px;
-    background: #0B3C49;
+    background: #ffffff;
     font-family: poppins;
     text-align: center;
     cursor: pointer;
