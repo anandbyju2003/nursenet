@@ -40,14 +40,16 @@ app.route("/userlogin")
     })
     .post(async(req,res)=>{
         const {email,password}=req.body;
-        await Users.findOne({email:email,password:password}).then((data)=>{
-            if(data){
-                req.session.myid=data.id;
-                res.render('listworkers', { data });
-            }
-            else{
-                res.sendFile(__dirname+'/public/loginfail.html');
-            }
+        await Users.findOne({email:email,password:password}).then(async (details)=>{
+            await Workers.find().then((data)=>{
+                if(data){
+                    req.session.myid=details.id;
+                    res.render('listworkers', { data });
+                }
+                else{
+                    res.sendFile(__dirname+'/public/loginfail.html');
+                }
+            })
         })});
 app.route('/nursesignup')
     .get((req, res) => {
@@ -57,7 +59,7 @@ app.route('/nursesignup')
         const { name, description, email, address, city, pincode, contact, profession, password } = req.body;
         const worker = new Workers({ name, description, email, address, city, pincode, contact, profession, password });
         await worker.save().then(() => {
-            res.redirect('/workerlogin');
+            res.redirect('/nurselogin');
         });
     });
 
