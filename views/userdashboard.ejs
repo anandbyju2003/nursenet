@@ -32,12 +32,12 @@
             <% data.forEach(function(booking,index) { %>
               <div class="booking <% if (booking.bookingstatus == 'done') { %>bookingaccept<% } else if (booking.bookingstatus == 'rejected') { %>bookingreject<% } else if (booking.bookingstatus == 'pending') { %>bookingpending<% }%> <%if (booking.bookingstatus == 'done' && booking.paymentstatus == 'paid' && booking.reviewstatus == 'done') { %>alldone<% } %>"  id="booking<%= index %>">
               <div id="detailwrapper">
-                <p><strong>Worker Name:</strong> <%= booking.workerid.name %> <strong>Profession:</strong> <%= booking.workerid.profession %></p>
+                <p><strong>Nurse Name:</strong> <%= booking.workerid.name %> </p>
                   
-                  <p><strong>Email:</strong> <%= booking.workerid.email %><strong>Contact:</strong> <%= booking.workerid.contact %></p>
+                  <!-- <p><strong>Email:</strong> <%= booking.workerid.email %><strong>Contact:</strong> <%= booking.workerid.contact %></p> -->
                   
-                  <p><strong>Date:</strong> <%= booking.date.toISOString().slice(0, 10).split('-').reverse().join('/') %><strong>Time:</strong> <%= booking.time %></p>
-
+                  <p><strong>From Date:</strong> <%=  booking.fromdate.toLocaleDateString('en-GB') %></p>
+                  <p><strong>To Date:</strong> <%=  booking.todate.toLocaleDateString('en-GB') %></p>
                   <p><strong>Problem:</strong><%= booking.problem %></p>
                     <p class="<% if (booking.paymentstatus == 'paid') { %>paypaid<% } else if (booking.paymentstatus == 'pending') { %>paypending<% } else if (booking.paymentstatus == 'requested') { %>payrequested<% } %>"> <strong>Payment: <%= booking.paymentstatus %></strong> </p>
                   <p  class="<% if (booking.bookingstatus == 'done') { %>bookaccept<% } else if (booking.bookingstatus == 'rejected') { %>bookreject<% } else if (booking.bookingstatus == 'pending') { %>bookpending<% } %>"><strong>Booking Status:  <%= booking.bookingstatus %></strong></p>

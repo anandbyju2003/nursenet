@@ -30,7 +30,7 @@ nav {
     font-family: lato;
     font-size: 40px;
     font-weight: bold;
-    color: #ffffff;
+    color: #000000;
 
 }
 ul {
@@ -44,7 +44,7 @@ ul li {
     font-size: 17px;
 }
 a:hover,li:hover{
-    color: #ffffff;
+    color: #dfdfdf;
 }
 header {
     display: flex;
@@ -52,7 +52,7 @@ header {
 }
 a{
     text-decoration: none;
-    color: black;
+    color: rgb(255, 255, 255);
 }
 #reviewgrid {
   display: grid;
@@ -85,7 +85,7 @@ backdrop-filter: blur( 5px );
 -webkit-backdrop-filter: blur( 5px );
 border-radius: 10px;
 border: 1px solid rgba( 255, 255, 255, 0.18 ); */
-background: rgba(0, 0, 0, 0.34);
+background: hsla(202, 37%, 41%, 0.728);
 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 backdrop-filter: blur( 3px );
 -webkit-backdrop-filter: blur( 3px );

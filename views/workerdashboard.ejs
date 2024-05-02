@@ -31,8 +31,10 @@
         <% books.forEach(function(book,index) { %>
             <div class="booking <% if (book.bookingstatus == 'done') { %>bookingaccept<% } else if (book.bookingstatus == 'rejected') { %>bookingreject<% } else if (book.bookingstatus == 'pending') { %>bookingpending<% }%> <%if (book.bookingstatus == 'done' && book.paymentstatus == 'paid' && book.reviewstatus == 'done') { %>alldone<% } %>"  id="booking<%= index %>">
                <div id="detailwrapper">
-                <p><strong>BookingId:</strong> <%= book._id %></p>
-                <p><strong>Name:</strong><%=book.userid.name%><strong>  Email:</strong><%=book.userid.email%><strong>  Phone:</strong><%=book.userid.contact%></p>
+                <p><strong>Booking Id:</strong> <%= book._id %></p>
+                <p><strong>Name:</strong><%=book.userid.name%></p>
+                <p><strong> Email:</strong><%=book.userid.email%></p>
+                <p> <strong>  Phone:</strong><%=book.userid.contact%></p>
                 <p>
                     <strong>Address:</strong><%=book.userid.address%>
                 </p>
@@ -41,14 +43,12 @@
                     <strong>Pincode:</strong> <%=book.userid.pincode%>
                 </p>
                 <p><strong>Problem:</strong><%= book.problem %></p>
-                <p><strong>Problem description:</strong><%= book.problemStatement %></p>
-                <p class="<% if (book.paymentstatus == 'paid') { %>paypaid<% } else if (book.paymentstatus == 'pending') { %>paypending<% }%>"> <strong>Payment: <%= book.paymentstatus %></strong> </p>
+                <p><strong>Description</strong><%= book.description %></p>
+                <p class="<% if (book.paymentstatus == 'paid') { %>paypaid<% } else if (book.paymentstatus == 'pending') { %>paypending<% }%>"> </p>
                 <p class="<% if (book.paymentstatus == 'paid') { %>paypaid<% } else if (book.paymentstatus == 'pending') { %>paypending<% } else if (book.paymentstatus == 'requested') { %>payrequested<% } %>"> <strong>Payment: <%= book.paymentstatus %></strong> </p>
                 <p  class="<% if (book.bookingstatus == 'done') { %>bookaccept<% } else if (book.bookingstatus == 'rejected') { %>bookreject<% } else if (book.bookingstatus == 'pending') { %>bookpending<% } %>"><strong>Booking: <%= book.bookingstatus %></strong> </p>
-                <% const locationMatch = book.locationLink.match(/(\d\.\d+,\d+\.\d+)/g);%>
-                <iframe src="https://maps.google.com/maps?q=<%= locationMatch[0] %>&hl=es;z=14&amp;output=embed"></iframe>
-                <p><strong>Date:</strong> <%= book.date.toLocaleDateString('en-GB') %>  <strong>Time:</strong> <%= book.time %></p>
-                
+                <p><strong>From Date:</strong> <%= book.fromdate.toLocaleDateString('en-GB') %></p>
+                <p><strong>To Date:</strong> <%= book.todate.toLocaleDateString('en-GB') %></p>
                 <div>
                     <% if (book.bookingstatus === 'pending') { %>
                         <button onclick="accepted('<%= index %>','<%= book._id %>')" id="accept<%= index %>" class="button">
@@ -69,7 +69,7 @@
                             <button onclick="reqpayment('<%= index %>','<%= book._id %>')" id="requestPaymentButton<%= index %>" class="button">
                                 <span class="button_lg">
                                     <span class="button_sl reqpay"></span>
-                                    <span class="button_text">Request payment</span>
+                                    <span class="button_text">Request payment confirmation</span>
                                 </span>
                             </button>
                         <% } %>

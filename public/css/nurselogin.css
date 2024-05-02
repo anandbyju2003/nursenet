@@ -42,7 +42,7 @@ a{
   text-decoration: none;
 }
 li:hover{
-    color: #ffffff;
+    color: #000000;
 }
 header {
     display: flex;
@@ -62,14 +62,14 @@ header {
 .login {
     width: 340px;
     height: 400px;
-    background: rgba( 0, 0, 0, 0.3 );
+    background: hsla(202, 37%, 41%, 0.728);
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     padding: 47px;
     padding-bottom: 57px;
     text-align: center;
-    color:#ffffff;
+    color:#000000;
     border-radius: 17px;
     padding-bottom: 50px;
     font-size: 1.3em;

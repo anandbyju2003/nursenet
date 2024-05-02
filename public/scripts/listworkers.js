@@ -4,6 +4,7 @@
         const cityserach = document.getElementById('citysearch');
         const ratingsearch = document.getElementById('ratingsearch');
         const availabilitysearch = document.getElementById('availabilitysearch');
+        console.log("this is loaded")
 
         namesearch.addEventListener('input', filternames);
         cityserach.addEventListener('input', filtercity);

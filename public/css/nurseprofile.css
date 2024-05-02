@@ -31,7 +31,7 @@ nav {
     font-family: lato;
     font-size: 45px;
     font-weight: bolder;
-    color: #ffffff;
+    color: #000000;
 
 }
 ul {
@@ -73,7 +73,7 @@ a{
     display:flex
 }
 #container{
-background: rgba(37, 36, 36, 0.6);
+background: hsla(202, 37%, 41%, 0.728);
 box-shadow: 0 8px 32px 0 rgba(16, 17, 39, 0.37);
 backdrop-filter: blur( 5px );
 -webkit-backdrop-filter: blur( 5px );

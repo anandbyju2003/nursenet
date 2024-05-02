@@ -33,22 +33,22 @@
             <form action="/bookconfirm" class='form' method="POST" id="locationForm">
                 <div class="input-box">
                     <label> From Date</label>
-                    <input  placeholder="Enter date" name='date' type="date">
+                    <input  placeholder="Enter date" name='fromdate' type="date" required>
                   </div>
                   <div class="input-box address">
                     <label>To Date</label>
-                    <input  placeholder="Enter date" name='date' type="date">
+                    <input  placeholder="Enter date" name='todate' type="date" required>
                    </div>
                     </div>
                   </div>
                 <div class="input-box">
                     <label>Type Of Need</label>
-                    <input  placeholder="What's the type of needs" name="problem" type="text">
+                    <input  placeholder="What's the type of needs" name="problem" type="text" required>
                 </div>
                 <div class="column">
                     <div class="input-box">
                       <label>Need Description</label>
-                      <textarea  placeholder="Describe the needs" name="problemStatement" type="text"></textarea>
+                      <textarea  placeholder="Describe the needs" name="description" type="text" required></textarea>
                     </div>
                     
                 </div>
@@ -58,7 +58,7 @@
                 <button type="submit" value="Submit">
                     <span class="transition"></span>
                     <span class="gradient"></span>
-                    <span class="label">Confirm booking</span>
+                    <span class="label">Confirm Booking</span>
                   </button>
                   
             </form>

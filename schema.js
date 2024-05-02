@@ -32,15 +32,16 @@ const workerSchema = new Schema({
 const bookingSchema=new Schema({
   workerid: { type: Schema.Types.ObjectId, ref: 'Workers' },
   userid: { type: Schema.Types.ObjectId, ref: 'Users' },
-  date:Date,
-  time:String,
-  locationLink:String,
+  fromdate:Date,
+  todate:Date,
+  // time:String,
+  // locationLink:String,
   problem:String,
-  problemStatement:String,
+  description:String,
   paymentstatus:{type:String,default:'pending'},
   bookingstatus:{type:String,default:'pending'},
   reviewstatus:{type:String,default:'pending'},
-  baseprice:{type:Number,default:700},
+  baseprice:{type:Number,default:100},
 });
 module.exports = {
   Users: mongoose.model("Users", userSchema),

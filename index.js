@@ -122,12 +122,12 @@ app.route("/bookconfirm")
     .post(async (req, res) => {
         const workerid = req.session.workerid;
         const userid = req.session.myid;
-        const date = req.body.date;
-        const time = req.body.time;
-        const locationLink = req.body.locationLink;
+        const fromdate = req.body.fromdate;
+        const todate = req.body.todate;
+        // const locationLink = req.body.locationLink;
         const problem = req.body.problem;
-        const problemStatement = req.body.problemStatement;
-        const booking = new Bookings({ workerid, userid, date, time, locationLink, problem, problemStatement });
+        const description = req.body.description;
+        const booking = new Bookings({ workerid, userid, fromdate,todate,problem,description });
         await booking.save().then((data) => {
             res.redirect('/userdashboard');
         });
